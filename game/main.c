@@ -1,5 +1,4 @@
-
- //jogo de rpg
+//bibliotecas padrões
 
 #include <stdio.h>
 #include <time.h>
@@ -8,25 +7,22 @@
 #include <stdlib.h>
 #include <string.h>
 
+//arquivos do jogo
+
+#include "personagem_atributos.h"
+
+#include "sprites.h" //falta incluir os sprite
+
+//titulo
 char titulo[] = 
 "\t\t\t _________________________________________________\n"
 "\t\t\t|                                                 |\n"
 "\t\t\t|                       RPG                       |\n"
 "\t\t\t| - - - - - - - - - - - - - - - - - - - - - - - - |\n"; // titulo para deixar os menus bonitinhos
+
 int menuNav; // variavel para navegacao entre menus
+
 int verificador; // essa variavel coloquei para ser um true/false, por exemplo na primeira parte, para ele conseguir andar precisa explorar a casa primeiro
-
-typedef struct //estrura para colocar as informaçoes do jogador e também de inimigos
-{
-    
-    char nome[20];
-    
-    char classe[20];
-
-    int vida[10];
-
-
-}Personagem_atributos;
 
 
 //      _           _       
@@ -52,21 +48,6 @@ int dado_6_lados(int jogada){
     return total; //retona um valor que podera ser usado como um ataque ou outra coisa
 }
 
-//                 _ _       
-//                (_) |      
-//  ___ _ __  _ __ _| |_ ___ 
-// / __| '_ \| '__| | __/ _ \
-// \__ \ |_) | |  | | ||  __/
-// |___/ .__/|_|  |_|\__\___|
-//     | |                   
-//     |_|                   
-
-
-int sprite_1(){
-
-    printf("\n.....\n"); //teste de sprite
-
-}
 
 //                            _       
 //                           | |      
@@ -77,11 +58,18 @@ int sprite_1(){
                                    
 void andar(){
     if(verificador == 0){
+
         system("cls"); //limpa a tela
         printf("Bom, é melhor procurar algo para me defender antes de explorar\n\n");
         opcoes();
+
     } else {
         printf("continuar daqui.");
+
+        //inciar um evento aleatorio:
+
+
+
     }
 
 
@@ -94,24 +82,41 @@ void explorarCasa(){
     puts("Qual cômodo deseja explorar?");
     printf("1 - Quarto\n2 - Sala principal\n");
     scanf("%d", &menuNav);
+
     switch (menuNav)
     {
+
+    //quarto
     case 1:
         if(verificador == 0){ // para entrar no quarto ele precisa entrar na sala primeiro
+
             puts("Você decide entrar no quarto, entretanto a porta esta trancada e não há formas de entrar\n\n");
             explorarCasa();
+
         } else {
+
             printf("O quarto esta escuro e abandonado, há restos de roupas pelo chão...\n");
             sleep(1);
             printf("Parece ter sido vasculhado por alguem recentemente...\n");
             sleep(1);
+            puts("em meio a bagunça, você observa alguns rasgos na parede. \n");
+            sleep(1);
+            puts("na parde ao lado uma escrita em sangue feito a mão 'eles são reais' ");
+
+        
+
+            opcoes();
+
         }
         break;
+    //sala
     case 2:
         if(verificador == 0){ // verificar se ele ja entrou ou nao na sala
             printf("Você entra silenciosamente na sala principal.\n");
             sleep(1);
-            sprite_1();
+
+            //removi as funções sprites do código, falta ainda iplementar os headers
+
             sleep(1);
             printf("O local está horrível, há pedaços de madeira podre em toda parte\n");
             sleep(1);
@@ -124,13 +129,17 @@ void explorarCasa(){
                 puts("Você chega perto para ver, afasta um pouco os pedaçoes destroçados de madeira...\n");
                 sleep(1);
                 puts("É isso! Uma chave, com certeza é a chave que precisa para entrar no quarto\n");
+
                 verificador = 1; // agora ele ja pode andar e entrar no quarto
+
                 sleep(1);
                 printf("Vamos voltar e explorar o quarto...\n");
                 explorarCasa();
 
             } else {
                 puts("Ah, melhor não ver o que é, devemos voltar!");
+                sleep(1);
+                puts("esta chave não parece ter utilidade neste cômodo.");
                 opcoes();
             }
             
@@ -141,10 +150,12 @@ void explorarCasa(){
 
 
 }
-
+//main -> cadastro -> mundo
 void mundo(){
 
     system("cls"); //limpa a tela
+    
+    //introdução:
 
     printf("*Você está em sua casa e enfim levanta...\n\n");
     sleep(1);
@@ -153,33 +164,39 @@ void mundo(){
     printf("Segue ao espelho, nada de especial\n");
     sleep(1);
 
-    sprite_1();
+    
 
     printf("Seu braço reflete, é possível ver uma mensagem...\n\n'Mate-os, liberte a alma' \n\n");
     sleep(1);
     puts("Você olha ao redor e não vê nada além de uma casa de madeira caindo aos pedaços\n");
     sleep(1);
-    opcoes();
+
+    opcoes(); //chama as opções
     
 }
+
+//main -> cadastro -> mundo -> opções -> (andar ou explorar casa)
 
 void opcoes()
 {
     puts("O que deseja fazer??");
+
     puts("1 - Andar \n2 - Explorar a casa\n");
+
     scanf("%d", &menuNav);
     switch (menuNav)
     {
     case 1:
-        andar();
+        andar(); // e depois andar
         break;
     case 2:
-        explorarCasa();
+        explorarCasa();  // primeiro terá que explorar a casa
     default:
-        opcoes();
+        opcoes(); 
         break;
     }
 }
+
 //                _           _             
 //               | |         | |            
 //   ___ __ _  __| | __ _ ___| |_ _ __ ___  
@@ -187,24 +204,24 @@ void opcoes()
 // | (_| (_| | (_| | (_| \__ \ |_| | | (_) |
 //  \___\__,_|\__,_|\__,_|___/\__|_|  \___/ 
                                          
-                                         
-
+//main -> cadastro
 int cadastro(){
     
     system("cls");
 
     int n, escolha;
 
-    Personagem_atributos personagem;
+    Personagem_atributos personagem_principal;
 
     puts("*Depois de uma longa noite, você finalmente acorda...\n");
     
     sleep(2);
     getchar();
-    printf("Como deveriamos lhe chamar?\n");
-    scanf("%19[^\n]s", &personagem.nome);
 
-    printf("Olá! %s \n", personagem.nome);
+    printf("Como deveriamos lhe chamar?\n");
+    scanf("%19[^\n]s", &personagem_principal.nome);
+
+    printf("Olá! %s \n", personagem_principal.nome);
     sleep(3);
 
     do
@@ -237,7 +254,13 @@ int cadastro(){
 
             if (escolha == 1)
             {
-                strcpy(personagem.classe, "mago");
+                strcpy(personagem_principal.classe, "mago");
+
+                personagem_principal.vida==15;
+                personagem_principal.ataque==3;
+
+
+
                 mundo();
                 
             }
@@ -258,7 +281,10 @@ int cadastro(){
 
             if (escolha == 1)
             {
-                strcpy(personagem.classe, "Humano");
+                strcpy(personagem_principal.classe, "Humano");
+                personagem_principal.vida==9;
+                personagem_principal.ataque==6;
+
                 mundo();
             }
             
@@ -281,7 +307,11 @@ int cadastro(){
 
             if (escolha == 1)
             {
-                strcpy(personagem.classe, "Elfo");
+                strcpy(personagem_principal.classe, "Elfo");
+                
+                personagem_principal.vida==10;
+                personagem_principal.ataque==4;
+
                 mundo();
             }
             
@@ -301,17 +331,14 @@ int cadastro(){
 // | '_ ` _ \ / _` | | '_ \ 
 // | | | | | | (_| | | | | |
 // |_| |_| |_|\__,_|_|_| |_|
-                         
-                         
-
-
+          
 int main(){
 
     char lingua[10];
     printf("%s", titulo);
 	printf("\t\t\t|                                                 |\n");
 	printf("\t\t\t|             Selecione sua localidade            |\n");
-	printf("\t\t\t|    Brasil  -  Digite: portugues                 |\n");
+	printf("\t\t\t|    Brasil  -  Digite: Portuguese                 |\n");
 	printf("\t\t\t|    (SEGUNDA LOC)                                |\n");
 	printf("\t\t\t|    (TERCEIRA LOC)                               |\n");
 	printf("\t\t\t|_________________________________________________|\n");
@@ -319,9 +346,11 @@ int main(){
     scanf("%s", &lingua);
     setlocale(LC_ALL, "Portuguese");
     srand(time(NULL));
-    Personagem_atributos personagem;
+
+    Personagem_atributos personagem_principal;
+
     if(strcmp(lingua, "pl") == 0){ // coloquei isso so pra pular o cadastro e agilizar o processo
-        strcpy(personagem.classe, "Humano");
+        strcpy(personagem_principal.classe, "Humano");
         mundo();
     } else {
         cadastro();
