@@ -1,4 +1,4 @@
-//jogo de rpg
+ //jogo de rpg
 
 #include <stdio.h>
 #include <time.h>
@@ -12,7 +12,7 @@ typedef struct //estrura para colocar as informaçoes do jogador e também de in
     
     char nome[20];
     
-    char *classe;
+    char classe[20];
 
     int vida[10];
 
@@ -24,7 +24,7 @@ int dado_6_lados(int jogada){
 
     //soma quantas vezes o jogador jogou o dado : 
 
-    int total;
+    int total=0;
 
     for (int i = 0; i < jogada; i++)
     {
@@ -34,6 +34,32 @@ int dado_6_lados(int jogada){
     return total; //retona um valor que podera ser usado como um ataque ou outra coisa
 }
 
+int sprite_1(){
+
+    printf("....."); //teste de sprite
+
+}
+
+void mundo(){
+
+    system("cls"); //limpa a tela
+
+    printf("Você está em sua casa e, por fim, levanta\n");
+    sleep(1);
+    printf("infelizmente, você não se recorda de nada.\n");
+    printf("você olha no espelho e não há nada especial.\n");
+    sleep(1);
+
+    sprite_1();
+\
+    printf("mas em seu braço há uma marca escrita: 'Mate-os, liberte a alma' \n");
+    sleep(1);
+    puts("você olha ao redor e não vê nada além de uma casa de madeira caindo aos pedaços");
+
+    puts("o que você faz agora?");
+    puts("1 - andar \n 2 - desistir");
+    
+}
 
 int cadastro(){
     
@@ -43,22 +69,26 @@ int cadastro(){
 
     Personagem_atributos personagem;
 
-    printf("Depois de uma longa noite pacata \n");
+    printf("Depois de uma longa noite \n");
     
     sleep(2);
 
     puts("você finalmente acorda ");
     
+    getchar();
+
     printf("qual o seu nome? ");
     scanf("%19[^\n]s", &personagem.nome);
 
     printf("Olá! %s \n", personagem.nome);
+    sleep(3);
+
 
     do
     {
-  
+        system("cls");
 
-        puts("vizualize as classes \n 1 - para mago \n 2 - para cyborgue \n 3 - elfo");
+        puts("vizualize as classes \n 1 - para mago \n 2 - para Humano \n 3 - para elfo");
         scanf("%d", &n);
 
         switch (n)
@@ -82,14 +112,14 @@ int cadastro(){
 
         case 2:
 
-            puts("Cyborgue \n Vida: 16 \n Dano: 2 \n  ");
+            puts("Humano \n Vida: 9 \n Dano: 6 \n  ");
              
             printf("1 - escolher \n2 - sair\n");
             scanf("%d", &escolha);
 
             if (escolha == 1)
             {
-                strcpy(personagem.classe, "Cyborgue");
+                strcpy(personagem.classe, "Humano");
             }
             
             
@@ -116,7 +146,6 @@ int cadastro(){
 
     }while(escolha != 1);
     
-    return mundo();
 
 }
 
@@ -129,5 +158,6 @@ int main(){
     setlocale(LC_ALL, lingua);
     srand(time(NULL));
 
-    return cadastro();
+    cadastro();
+  
 }
