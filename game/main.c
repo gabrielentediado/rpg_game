@@ -51,7 +51,7 @@ void mundo(){
     sleep(1);
 
     sprite_1();
-\
+
     printf("mas em seu braço há uma marca escrita: 'Mate-os, liberte a alma' \n");
     sleep(1);
     puts("você olha ao redor e não vê nada além de uma casa de madeira caindo aos pedaços");
