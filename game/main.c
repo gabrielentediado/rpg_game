@@ -11,6 +11,7 @@
 
 #include "personagem_atributos.h"
 #include "sprites.h" //falta incluir os sprite
+#include "dado.h"
 
 //titulo
 char titulo[] = 
@@ -24,37 +25,19 @@ int menuNav; // variavel para navegacao entre menus
 int verificador=0; // essa variavel coloquei para ser um true/false, por exemplo na primeira parte, para ele conseguir andar precisa explorar a casa primeiro
 
 
-//      _           _       
-//     | |         | |      
-//   __| | __ _  __| | ___  
-//  / _` |/ _` |/ _` |/ _ \ 
-// | (_| | (_| | (_| | (_) |
-//  \__,_|\__,_|\__,_|\___/ 
-                         
-                         
-
-int dado_6_lados(int jogada){
-
-    //soma quantas vezes o jogador jogou o dado : 
-
-    int total=0;
-
-    for (int i = 0; i < jogada; i++)
-    {
-        total = total + rand() % 6 + 1;
-    }
-    
-    return total; //retona um valor que podera ser usado como um ataque ou outra coisa
-}
-
-
 //                            _       
 //                           | |      
 //  _ __ ___  _   _ _ __   __| | ___  
 // | '_ ` _ \| | | | '_ \ / _` |/ _ \ 
 // | | | | | | |_| | | | | (_| | (_) |
 // |_| |_| |_|\__,_|_| |_|\__,_|\___/ 
-                                   
+
+
+
+
+//andar
+
+
 void andar(){
     if(verificador == 0){
         getchar(); //buffer
@@ -68,7 +51,11 @@ void andar(){
 
         //inciar um evento aleatorio:
     }
-}                                   
+}                 
+
+
+// explorar Casa
+
 
 void explorarCasa(){
     system("cls");
@@ -94,37 +81,47 @@ void explorarCasa(){
             sleep(1);
             printf("Parece ter sido vasculhado por alguem recentemente...\n");
             sleep(1);
-            puts("em meio a bagunça, você observa alguns rasgos na parede. \n");
+            puts("Em meio a bagunça, você observa alguns rasgos na parede. \n");
             sleep(1);
-            puts("na parde ao lado uma escrita em sangue feito a mão 'eles são reais' ");
+            puts("Na parde ao lado uma escrita em sangue feito a mão 'eles são reais' \n\n");
             sleep(1);
-            puts("Logo abaixo um báu de madeira, você deseja abrir? ");
+            puts("Logo abaixo um báu de madeira, você deseja abrir? \n");
             
             puts("1-para abrir\n2-para voltar");
 
-            puts("*a partir de agora você contará com a sua sorte!*"); //começar a usar o dado daqui depois da introdução
+            puts("\n\n*Você contará com sua sorte para conseguir ou não abrir o baú*"); //começar a usar o dado daqui depois da introdução
 
-            puts("");
             scanf("%d", &menuNav);
 
-            switch (menuNav)
-            {
-            case 1:
+
+
+            if (menuNav == 1){
+
+                // dado gerado
+
+                int dadoGerado = dado6();
                 
+                Personagem_inventario inv;
 
+                if(dado6 >= 4){
+                    printf("Você empurra o baú, uma parte se solta e você pode conferir o que há dentro\n\n");
+                    printf("Legal, você encontrou um pergaminho, item adicionado ao seu inventário\n");
+                    inv.pergaminho = 1;
+                    sleep(2);
+                    printf("Acho que não há mais o que explorar, vamos sair da casa!");
+                    opcoes();
+                    
+                } else {
+                    printf("O baú está muito bem lacrado, infelizmente você não consegue abrir\n");
+                    sleep(2);
+                    printf("Acho que não há mais o que explorar, vamos sair da casa!");
+                    opcoes();
+                }
 
-                break;
-            case 2:
+            } else {
 
-            break;
-
-            default:
-                break;
             }
 
-
-
-            opcoes();
 
         }
         break;
@@ -368,8 +365,9 @@ int main(){
         
         personagem_principal.vida==999;
         personagem_principal.ataque==999;
+        verificador = 1;
 
-        mundo();
+        explorarCasa();
 
     } else {
         cadastro();
