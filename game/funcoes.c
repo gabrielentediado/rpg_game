@@ -11,6 +11,8 @@
 
 int dado(void){
 
+    srand(time(NULL)); 
+
     return((rand() % 6) + 1);
 
 }
