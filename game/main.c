@@ -3,9 +3,12 @@
 #include <stdio.h>
 #include <time.h>
 #include <unistd.h> 
+
 #include <locale.h>
+
 #include <stdlib.h>
 #include <string.h>
+
 
 //arquivos do jogo
 
@@ -15,15 +18,6 @@
 
 #include "funcoes.c"
 
-
-//titulo
-char titulo[] = 
-"\t\t\t _________________________________________________\n"
-"\t\t\t|                                                 |\n"
-"\t\t\t|                       RPG                       |\n"
-"\t\t\t| - - - - - - - - - - - - - - - - - - - - - - - - |\n"; // titulo para deixar os menus bonitinhos
-
-int menuNav; // variavel para navegacao entre menus
 
 int verificador=0; // essa variavel coloquei para ser um true/false, por exemplo na primeira parte, para ele conseguir andar precisa explorar a casa primeiro
 
@@ -224,131 +218,6 @@ int  opcoes()
     }
 }
 
-//                _           _             
-//               | |         | |            
-//   ___ __ _  __| | __ _ ___| |_ _ __ ___  
-//  / __/ _` |/ _` |/ _` / __| __| '__/ _ \ 
-// | (_| (_| | (_| | (_| \__ \ |_| | | (_) |
-//  \___\__,_|\__,_|\__,_|___/\__|_|  \___/ 
-                                         
-//main -> cadastro
-int cadastro(){
-    
-    system("cls");
-
-    int escolha;
-
-    Personagem_atributos personagem_principal;
-
-    puts("*Depois de uma longa noite, você finalmente acorda...\n");
-    
-    sleep(2);
-    getchar();//limpar o buffer
-
-    printf("Como deveriamos lhe chamar?\n");
-    scanf("%19[^\n]s", &personagem_principal.nome);
-
-    printf("Olá! %s \n", personagem_principal.nome);
-    sleep(3);
-
-    do
-    {
-        system("cls");
-
-        printf("%s", titulo);
-	    printf("\t\t\t|           Visualize as classes:                 |\n");
-	    printf("\t\t\t|    1 - Para Mago                                |\n");
-        printf("\t\t\t|    2 - Para Humano                              |\n");
-        printf("\t\t\t|    3 - Para Elfo                                |\n");
-        printf("\t\t\t| - - - - - - - - - - - - - - - - - - - - - - - - |\n");
-        
-        scanf("%d", &menuNav);
-
-        switch (menuNav)
-        {
-        case 1:
-            
-            printf("%s", titulo);
-            printf("\t\t\t|                  MAGO                           |\n");
-            printf("\t\t\t|    VIDA: 15HP                                   |\n");
-            printf("\t\t\t|    DANO: 3HP                                    |\n");
-            printf("\t\t\t| - - - - - - - - - - - - - - - - - - - - - - - - |\n");
-
-            printf("1 - Escolher \n2 - Sair\n");
-
-            scanf("%d", &escolha);
-
-            if (escolha == 1)
-            {
-                strcpy(personagem_principal.classe, "mago");
-
-                personagem_principal.vida==15;
-                personagem_principal.ataque==3;
-
-                mundo();
-                
-            }
-            
-
-            break;
-
-        case 2:
-
-            printf("%s", titulo);
-            printf("\t\t\t|                  HUMANO                         |\n");
-            printf("\t\t\t|    VIDA: 9HP                                    |\n");
-            printf("\t\t\t|    DANO: 6HP                                    |\n");
-            printf("\t\t\t| - - - - - - - - - - - - - - - - - - - - - - - - |\n");
-             
-            printf("1 - Escolher \n2 - Sair\n");
-            scanf("%d", &escolha);
-
-            if (escolha == 1)
-            {
-                strcpy(personagem_principal.classe, "Humano");
-
-                personagem_principal.vida==9;
-                personagem_principal.ataque==6;
-
-                mundo();
-            }
-            
-            
-            break;
-        
-        case 3:
-
-
-            printf("%s", titulo);
-            printf("\t\t\t|                  ELFO                           |\n");
-            printf("\t\t\t|    VIDA: 10HP                                   |\n");
-            printf("\t\t\t|    DANO: 4HP                                    |\n");
-            printf("\t\t\t| - - - - - - - - - - - - - - - - - - - - - - - - |\n");
-             
-            printf("1 - Escolher \n2 - Sair\n");
-
-            scanf("%d", &escolha);
-            
-
-            if (escolha == 1)
-            {
-                strcpy(personagem_principal.classe, "Elfo");
-                
-                personagem_principal.vida==10;
-                personagem_principal.ataque==4;
-
-                mundo();
-            }
-            
-
-            break;
-
-        }
-
-    }while(escolha != 1);
-    
-
-}
 
 //                  _       
 //                 (_)      
@@ -359,35 +228,43 @@ int cadastro(){
           
 int main(){
 
-    char lingua[10];
+    int lingua;
+
     printf("%s", titulo);
+    sleep(2);
+    printf("\t\t\t|_________________________________________________|\n");
 	printf("\t\t\t|                                                 |\n");
 	printf("\t\t\t|             Selecione sua localidade            |\n");
-	printf("\t\t\t|    Brasil  -  Digite: Portuguese                 |\n");
-	printf("\t\t\t|    (SEGUNDA LOC)                                |\n");
-	printf("\t\t\t|    (TERCEIRA LOC)                               |\n");
+	printf("\t\t\t|               Brasil  -  Digite: 1              |\n");
+	printf("\t\t\t|              (SEGUNDA LOC em breve)             |\n");
+	printf("\t\t\t|              (TERCEIRA LOC em breve)            |\n");
 	printf("\t\t\t|_________________________________________________|\n");
 
-    scanf("%s", &lingua);
-    setlocale(LC_ALL, "Portuguese");
+    scanf("%d", &lingua);
+
     srand(time(NULL));
 
     Personagem_atributos personagem_principal;
 
-    if(strcmp(lingua, "pl") == 0){ // coloquei isso so pra pular o cadastro e agilizar o processo
-        
+
+    switch (lingua)
+    {
+    case 1:
+        setlocale (LC_ALL, "Portuguese");
+        cadastro();
+        break;
+    case 2:
+        //para testes
+        setlocale (LC_ALL, "Portuguese");
         strcpy(personagem_principal.classe, "Humano");
-        
         personagem_principal.vida==999;
         personagem_principal.ataque==999;
         verificador = 1;
 
         explorarCasa();
 
-    } else {
-        cadastro();
+    default:
+        main();
     }
-
-
   
 }
