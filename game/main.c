@@ -2,7 +2,7 @@
 
 #include <stdio.h>
 #include <time.h>
-#include <unistd.h> //biblioteca para delay (sleep)
+#include <unistd.h> 
 #include <locale.h>
 #include <stdlib.h>
 #include <string.h>
@@ -10,8 +10,11 @@
 //arquivos do jogo
 
 #include "personagem_atributos.h"
-#include "sprites.h" //falta incluir os sprite
-#include "dado.h"
+
+#include "sprites.h"
+
+#include "funcoes.c"
+
 
 //titulo
 char titulo[] = 
@@ -24,15 +27,12 @@ int menuNav; // variavel para navegacao entre menus
 
 int verificador=0; // essa variavel coloquei para ser um true/false, por exemplo na primeira parte, para ele conseguir andar precisa explorar a casa primeiro
 
-
 //                            _       
 //                           | |      
 //  _ __ ___  _   _ _ __   __| | ___  
 // | '_ ` _ \| | | | '_ \ / _` |/ _ \ 
 // | | | | | | |_| | | | | (_| | (_) |
 // |_| |_| |_|\__,_|_| |_|\__,_|\___/ 
-
-
 
 
 //andar
@@ -93,25 +93,36 @@ void explorarCasa(){
 
             scanf("%d", &menuNav);
 
+            int dadoGerado = dado();
 
 
             if (menuNav == 1){
 
                 // dado gerado
 
-                int dadoGerado = dado6();
-                
-                Personagem_inventario inv;
 
-                if(dado6 >= 4){
+                Personagem_inventario inv;
+                
+
+                if(dadoGerado >= 4){
+                    
+                    sleep(1);
+                    printf("valor da jogadada do dado : %d \n", dadoGerado); // mostra o valor do dado
+                    
                     printf("Você empurra o baú, uma parte se solta e você pode conferir o que há dentro\n\n");
                     printf("Legal, você encontrou um pergaminho, item adicionado ao seu inventário\n");
+
                     inv.pergaminho = 1;
+
                     sleep(2);
                     printf("Acho que não há mais o que explorar, vamos sair da casa!");
                     opcoes();
                     
                 } else {
+
+                    sleep(1);
+                    printf("valor da jogadada do dado : %d \n", dadoGerado); // mostra o valor do dado
+
                     printf("O baú está muito bem lacrado, infelizmente você não consegue abrir\n");
                     sleep(2);
                     printf("Acho que não há mais o que explorar, vamos sair da casa!");
@@ -131,7 +142,7 @@ void explorarCasa(){
             printf("Você entra silenciosamente na sala principal.\n");
             sleep(1);
 
-            //removi as funções sprites do código, falta ainda iplementar os headers
+            //removi as funções sprites do código, falta ainda implementar os headers
 
             sleep(1);
             printf("O local está horrível, há pedaços de madeira podre em toda parte\n");
@@ -152,16 +163,20 @@ void explorarCasa(){
                 printf("Vamos voltar e explorar o quarto...\n");
                 explorarCasa();
 
-            } else {
+            }else{
+
                 puts("Ah, melhor não ver o que é, devemos voltar!");
                 sleep(1);
-                puts("esta chave não parece ter utilidade neste cômodo.");
                 opcoes();
+
             }
             
         }
     default:
-        break;
+        
+        //para não parar a execução do jogo do nada
+        sleep(1);
+        explorarCasa();
     }
 
 

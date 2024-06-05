@@ -23,6 +23,7 @@ typedef struct //estrura para colocar as informaçoes do jogador e também de in
 // inventario do jogador, usei numeros para verificar se ele tem ou não, exemplo o primeiro pergaminho é 1, então quando for para usar
 // so precisa verificar se o pergaminho que ele tem é o 1, 2,3 e etc, mesma coisa com outros itens. No caso de espadas é melhor aumentar direto
 // o ataque do personagem dele
+
 typedef struct 
 {
     int pergaminho;

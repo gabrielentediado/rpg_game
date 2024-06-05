@@ -10,6 +10,8 @@
 #ifndef SPRITE_H
 #define SPRITE_H
 
+
+
 // Estrutura para um sprite de personagem
 
 typedef struct {
