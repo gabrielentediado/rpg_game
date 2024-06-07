@@ -44,7 +44,7 @@ int cadastro(){
     scanf("%19[^\n]s", &personagem_principal.nome);
     
 
-    printf("Olá! %s \n", personagem_principal.nome);
+    printf("que bom que acordou, bem-vindo de volta %s \n", personagem_principal.nome);
     sleep(3);
 
     do
