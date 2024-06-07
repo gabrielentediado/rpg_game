@@ -29,13 +29,16 @@
 
 //andar
 
-
+//                   testando o combate
 void andar(){
+    int dadoGerado = dado();
 
-    inimigo_1.ataque = 1;
-    inimigo_1.vida = 10;
-    strcpy(inimigo_1.nome, "dath");
-    strcpy(inimigo_1.classe, "monstro");
+    //tranformei os inimigos em vetores, para possibilitar colocar vários inimigos, pensei em fazer com os ponteiros também
+    inimigo_1[0].ataque = 1;
+    inimigo_1[0].vida = 10;
+    strcpy(inimigo_1[0].nome, "dath");
+    strcpy(inimigo_1[0].classe, "monstro");
+    int i=0;
 
     if(verificador == 0){
         getchar(); //buffer
@@ -55,15 +58,24 @@ void andar(){
         switch (menuNav)
         {
         case 1:
-            dado();
-            break;
+
+            
+
+            if (dadoGerado > 2){
+                printf("dado gerado: %d", dadoGerado);
+                printf("Parece que o caminho está limpo ");
+            
+            }else{
+                printf("dado gerado: %d", dadoGerado);
+                sleep(10);
+                
+                batalha(i);
+            }
+            
+            break;  
         
         case 2:
-            //testando o combate
-
-            printf("%s tenta dar uma passo, mas do escuro aparece algo, um mostro vindo em sua direção \n", personagem_principal.nome);
-            sleep(1);
-            //combate(); //no arquivo funções
+            batalha(i); 
             break;
         }
     }

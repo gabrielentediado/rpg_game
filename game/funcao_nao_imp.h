@@ -7,7 +7,6 @@ int dado(void);
 
 int cadastro();
 
-
 int verificador=0; // essa variavel coloquei para ser um true/false, por exemplo na primeira parte, para ele conseguir andar precisa explorar a casa primeiro
 
 //titulo

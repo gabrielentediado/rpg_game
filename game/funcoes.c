@@ -267,17 +267,22 @@ void sala(){
 
 
 }
-/*
 
-int combate(){
+int batalha(int x) //para saber qual inimigo usei o "x", é só passar o valor ao chamar a função
+{
 
-    
-    printf("%s \n", combate);
+
+
+    printf("tenta dar uma passo, mas do escuro aparece algo, um mostro vindo em sua direção \n");
+    sleep(10);
 
     do
     {
-        
-    } while (personagem_principal.vida =! 0 || inimigo_1.vida =! 0 );
+        system("cls");
+        printf("%s", combate);
+
+
+    } while (personagem_principal.vida != 0 || inimigo_1[x].vida != 0);
     
 }
 
@@ -287,4 +292,3 @@ int morte()
 
 
 }
-*/
