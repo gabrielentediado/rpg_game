@@ -72,11 +72,12 @@ void andar(){
                 batalha(i);
             }
             
-            break;  
+        break;  
         
         case 2:
             batalha(i); 
-            break;
+        break;
+
         }
     }
 }                 
@@ -86,6 +87,7 @@ void andar(){
 
 
 void explorarCasa(){
+
     system("cls");
     puts("\n\n*Você decide explorar a casa...*");
     sleep(1);
@@ -96,25 +98,27 @@ void explorarCasa(){
     switch (menuNav){
 
     case 1:
-    //quarto
-    quarto();
-    break;
+        //quarto
+        quarto();
+        break;
 
     case 2:
     //sala
-    sala(); //entrar na sala primeiro e depois no quarto
-    break; //tinha apagado os breaks sem querer ao passar as funções
+        sala(); //entrar na sala primeiro e depois no quarto
+        break; //tinha apagado os breaks sem querer ao passar as funções
 
     //coloquei as opções
     case 3:
-    opcoes();
+        opcoes();
     
+        break;
+
     default:
         
-    //para não parar a execução do jogo do nada
-    explorarCasa();
+        //para não parar a execução do jogo do nada
+        explorarCasa();
 
-    break; //tinha apagado os breaks sem querer ao passar as funções
+        break; //tinha apagado os breaks sem querer ao passar as funções
 
     }
 
@@ -207,6 +211,7 @@ int main(){
         verificador = 1; 
 
         andar();
+        break;
 
     default:
         main();
