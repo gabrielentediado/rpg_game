@@ -12,9 +12,9 @@ typedef struct //estrura para colocar as informaçoes do jogador e também de in
     
     char classe[20];
 
-    int vida[10];
+    int vida;
 
-    int ataque[10]; 
+    int ataque; 
 
 }Personagem_atributos;
 

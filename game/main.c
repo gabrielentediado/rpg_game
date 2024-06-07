@@ -67,11 +67,6 @@ void andar(){
 
 
             break;
-
-        default:
-
-            break;
-
         }
     }
 }                 
@@ -94,10 +89,12 @@ void explorarCasa(){
     case 1:
     //quarto
     quarto();
+    break;
 
     case 2:
     //sala
     sala();
+    break;
 
     default:
         
@@ -144,6 +141,7 @@ int  opcoes()
         break;
     case 2:
         explorarCasa();  // primeiro terá que explorar a casa
+        break; //tinha apagado os breaks sem querer ao passar as funções
     default:
         opcoes(); 
         break;
