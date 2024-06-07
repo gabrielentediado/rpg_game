@@ -33,6 +33,13 @@ int verificador=0; // essa variavel coloquei para ser um true/false, por exemplo
 
 
 void andar(){
+
+    Personagem_atributos inimigo_1; 
+    inimigo_1.ataque == 1;
+    inimigo_1.vida == 10;
+    inimigo_1.nome == "Bath";
+    inimigo_1.classe == "Monstro";
+
     if(verificador == 0){
         getchar(); //buffer
         system("cls"); //limpa a tela
