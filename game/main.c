@@ -92,7 +92,7 @@ void explorarCasa(){
     puts("\n\n*Você decide explorar a casa...*");
     sleep(1);
     puts("Qual cômodo deseja explorar?");
-    printf("1 - Quarto\n2 - Sala principal\n");
+    printf("1 - Quarto\n2 - Sala principal - \n 3 voltar para o menu\n");
     scanf("%d", &menuNav);
 
     switch (menuNav){
