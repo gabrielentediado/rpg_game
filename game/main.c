@@ -34,8 +34,8 @@ void andar(){
 
     inimigo_1.ataque = 1;
     inimigo_1.vida = 10;
-    inimigo_1.nome == "Dath";
-    inimigo_1.classe == "Monstro";
+    strcpy(inimigo_1.nome, "dath");
+    strcpy(inimigo_1.classe, "monstro");
 
     if(verificador == 0){
         getchar(); //buffer
@@ -63,9 +63,7 @@ void andar(){
 
             printf("%s tenta dar uma passo, mas do escuro aparece algo, um mostro vindo em sua direção \n", personagem_principal.nome);
             sleep(1);
-            printf("%s \n", combate);
-
-
+            combate(); //no arquivo funções
             break;
         }
     }
@@ -168,7 +166,7 @@ int  opcoes()
 int main(){
     setlocale (LC_ALL, "Portuguese");
     int lingua;
-
+    personagem_principal.vida = 0;
     printf("%s", titulo);
     sleep(2);
     printf("\t\t\t|_________________________________________________|\n");
@@ -194,7 +192,7 @@ int main(){
         personagem_principal.vida=999;
         personagem_principal.ataque=999;
 
-        verificador = 1;
+        verificador = 1; 
 
         andar();
 

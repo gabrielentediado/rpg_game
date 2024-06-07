@@ -200,6 +200,7 @@ int quarto(){
                     
                     sleep(1);
                     printf("Acho que não há mais o que explorar, vamos sair da casa!");
+                    sleep(10);
                     opcoes();
                     
                 } else {
@@ -210,6 +211,7 @@ int quarto(){
                     printf("O baú está muito bem lacrado, infelizmente você não consegue abrir\n");
                     sleep(2);
                     printf("Acho que não há mais o que explorar, vamos sair da casa!");
+                    sleep(10);
                     opcoes();
                 }
 
@@ -265,4 +267,24 @@ void sala(){
 
 
 }
+/*
+
+int combate(){
+
     
+    printf("%s \n", combate);
+
+    do
+    {
+        
+    } while (personagem_principal.vida =! 0 || inimigo_1.vida =! 0 );
+    
+}
+
+int morte()
+{
+
+
+
+}
+*/
