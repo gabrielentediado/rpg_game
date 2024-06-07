@@ -41,7 +41,7 @@ void andar(){
         getchar(); //buffer
         system("cls"); //limpa a tela
         printf("Bom, é melhor explorar a casa para procurar algo para me defender \n\n");
-        sleep(3); //tava pasando direto para as opções
+        sleep(10); //tava pasando direto para as opções
         opcoes();
 
     } 
@@ -95,6 +95,10 @@ void explorarCasa(){
     sala(); //entrar na sala primeiro e depois no quarto
     break; //tinha apagado os breaks sem querer ao passar as funções
 
+    //coloquei as opções
+    case 3:
+    opcoes();
+    
     default:
         
     //para não parar a execução do jogo do nada
@@ -121,7 +125,7 @@ void mundo(){
     printf("Seu braço reflete, é possível ver uma mensagem...\n\n'Mate-os, liberte a alma' \n\n");
     sleep(1);
     puts("Você olha ao redor e não vê nada além de uma casa de madeira caindo aos pedaços\n");
-    sleep(1);
+    sleep(10);
 
     opcoes(); //chama as opções
     
@@ -131,6 +135,10 @@ void mundo(){
 
 int  opcoes()
 {
+    system("cls");
+
+    puts("Menu: ");
+
     puts("O que deseja fazer??");
 
     puts("1 - Andar \n2 - Explorar a casa\n");

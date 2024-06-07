@@ -45,7 +45,7 @@ int cadastro(){
     
 
     printf("que bom que acordou, bem-vindo de volta %s \n", personagem_principal.nome);
-    sleep(3);
+    sleep(5);
 
     do
     {
@@ -154,8 +154,8 @@ int quarto(){
         if(verificador == 0){ // para entrar no quarto ele precisa entrar na sala primeiro
 
             puts("Você decide entrar no quarto, entretanto a porta esta trancada e não há formas de entrar\n\n");
-            puts("talvez tenha alguma chave em algum lugar...");
-            sleep(3); //colocando os sleep para não executar muito rapido e dar tempo de ler
+            puts("talvez tenha algo para abrir a porta em algum lugar...");
+            sleep(10); //colocando os sleep para não executar muito rapido e dar tempo de ler
             explorarCasa();
 
         } else {
@@ -255,8 +255,8 @@ void sala(){
             }else{
 
                 puts("Ah, melhor não ver o que é, devemos voltar!");
-                sleep(2);
-                opcoes();
+                sleep(10);
+                explorarCasa(); //para não ficar confuso, ele volta para as opções de sala ou quarto
 
             }
             
