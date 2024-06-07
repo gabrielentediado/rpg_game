@@ -61,7 +61,7 @@ void andar(){
         case 2:
             //testando o combate
 
-            printf("%d tenta dar uma passo, mas do escuro aparece algo, um mostro vindo em sua direção \n", personagem_principal.nome);
+            printf("%s tenta dar uma passo, mas do escuro aparece algo, um mostro vindo em sua direção \n", personagem_principal.nome);
             sleep(1);
             printf("%s \n", combate);
 
