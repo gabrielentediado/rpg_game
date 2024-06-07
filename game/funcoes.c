@@ -78,8 +78,8 @@ int cadastro(){
             {
                 strcpy(personagem_principal.classe, "mago");
 
-                personagem_principal.vida==15;
-                personagem_principal.ataque==3;
+                personagem_principal.vida = 15;
+                personagem_principal.ataque = 3;
 
                 mundo();
                 
@@ -103,8 +103,8 @@ int cadastro(){
             {
                 strcpy(personagem_principal.classe, "Humano");
 
-                personagem_principal.vida==9;
-                personagem_principal.ataque==6;
+                personagem_principal.vida=9;
+                personagem_principal.ataque=6;
 
                 mundo();
             }
@@ -130,8 +130,8 @@ int cadastro(){
             {
                 strcpy(personagem_principal.classe, "Elfo");
                 
-                personagem_principal.vida ==10;
-                personagem_principal.ataque ==4;
+                personagem_principal.vida = 10;
+                personagem_principal.ataque = 4;
 
                 mundo();
             }
@@ -255,7 +255,7 @@ void sala(){
             }else{
 
                 puts("Ah, melhor não ver o que é, devemos voltar!");
-                sleep(1);
+                sleep(2);
                 opcoes();
 
             }

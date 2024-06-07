@@ -32,8 +32,8 @@
 
 void andar(){
 
-    inimigo_1.ataque == 1;
-    inimigo_1.vida == 10;
+    inimigo_1.ataque = 1;
+    inimigo_1.vida = 10;
     inimigo_1.nome == "Dath";
     inimigo_1.classe == "Monstro";
 
@@ -138,10 +138,10 @@ int  opcoes()
     switch (menuNav)
     {
     case 1:
-        andar(); 
+        andar(); //no arquivo funções
         break;
     case 2:
-        explorarCasa();  // primeiro terá que explorar a casa
+        explorarCasa();  // primeiro terá que explorar a casa (no arquivo funções)
         break; //tinha apagado os breaks sem querer ao passar as funções
     default:
         opcoes(); 
@@ -177,14 +177,14 @@ int main(){
     switch (lingua)
     {
     case 1:
-        cadastro();
+        cadastro(); //no arquivo funções
         break;
     case 2:
         //para testes
         
         strcpy(personagem_principal.classe, "Humano");
-        personagem_principal.vida==999;
-        personagem_principal.ataque==999;
+        personagem_principal.vida=999;
+        personagem_principal.ataque=999;
 
         verificador = 1;
 
