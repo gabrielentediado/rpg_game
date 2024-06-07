@@ -154,6 +154,8 @@ int quarto(){
         if(verificador == 0){ // para entrar no quarto ele precisa entrar na sala primeiro
 
             puts("Você decide entrar no quarto, entretanto a porta esta trancada e não há formas de entrar\n\n");
+            puts("talvez tenha alguma chave em algum lugar...");
+            sleep(3); //colocando os sleep para não executar muito rapido e dar tempo de ler
             explorarCasa();
 
         } else {
@@ -211,8 +213,6 @@ int quarto(){
                     opcoes();
                 }
 
-            } else {
-
             }
 
 
@@ -249,6 +249,7 @@ void sala(){
 
                 sleep(1);
                 printf("Vamos voltar e explorar o quarto...\n");
+                sleep(1);
                 explorarCasa();
 
             }else{

@@ -85,7 +85,6 @@ void explorarCasa(){
 
     switch (menuNav){
 
-    //quarto
     case 1:
     //quarto
     quarto();
@@ -93,13 +92,15 @@ void explorarCasa(){
 
     case 2:
     //sala
-    sala();
-    break;
+    sala(); //entrar na sala primeiro e depois no quarto
+    break; //tinha apagado os breaks sem querer ao passar as funções
 
     default:
         
     //para não parar a execução do jogo do nada
     explorarCasa();
+
+    break; //tinha apagado os breaks sem querer ao passar as funções
 
     }
 
@@ -173,10 +174,6 @@ int main(){
     scanf("%d", &lingua);
 
     srand(time(NULL));
-
-
-
-
     switch (lingua)
     {
     case 1:
