@@ -63,7 +63,7 @@ void andar(){
 
             printf("%s tenta dar uma passo, mas do escuro aparece algo, um mostro vindo em sua direção \n", personagem_principal.nome);
             sleep(1);
-            combate(); //no arquivo funções
+            //combate(); //no arquivo funções
             break;
         }
     }
