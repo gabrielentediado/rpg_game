@@ -111,7 +111,6 @@ void explorarCasa(){
     //coloquei as opções
     case 3:
         opcoes();
-    
         break;
 
     default:
