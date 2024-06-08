@@ -432,42 +432,6 @@ int morte()
     printf("morreu \n"); 
 
 }
-/*
-int animation_1(){
-    system("cls");
-    printf("%s", titulo_1);
-    sleep(1);
-    animation_2();
- 
-   
-}
-
-int animation_2(){
-
-    system("cls");
-    printf("%s", titulo_2);
-    sleep(1);
-    animation_3();
-}
-
-int animation_3(){
-
-    system("cls");
-    printf("%s", titulo_3);
-    sleep(1);
-    animation_4();
-    
-    
-}
-
-int animation_4(){
-    system("cls");
-    printf("%s", titulo_4);
-    sleep(1);
-    animation_1();
- 
-}
-*/
 
 animation(){
     
