@@ -302,6 +302,8 @@ int batalha(int x) //para saber qual inimigo usei o "x", é só passar o valor a
         printf("__________ vida: %s ____________\n",inimigo_1[x].vida);
 
         printf("%s", combate);
+        printf("_____________| %s |___________________ \n", personagem_principal.nome);
+        printf("__________ Sua vida: %s ____________\n", personagem_principal.vida);
         scanf("%d", menuNav);
         switch (menuNav)
         {
