@@ -11,7 +11,7 @@
 #include "personagem_atributos.h"
 
 //dado de 6 lados
-int dado(void){
+int dado(){
 
     srand(time(NULL));
 
@@ -20,7 +20,7 @@ int dado(void){
 }
 
 //dado de 3 lados
-int dado_2(void){
+int dado_2(){
 
     srand(time(NULL));
 
@@ -228,7 +228,7 @@ int quarto(){
 
             }else if(menuNav == 2){
                 
-                printf("vamos sair da casa \n");
+                printf("vamos voltar \n");
                 sleep(10);
                 opcoes();
 
@@ -290,13 +290,13 @@ int batalha(int x) //para saber qual inimigo usei o "x", é só passar o valor a
 
 
 
-    printf("tenta dar uma passo, mas do escuro aparece algo, um mostro vindo em sua direção \n");
-    sleep(10);
+    printf("tenta dar uma passo, mas do escuro aparece algo, um %s vindo em sua direção \n", inimigo_1[x].classe);
+    sleep(5);
    
     do
     {
         system("cls");
-
+        int defesa = 0;
         printf("Nome do inimigo: %s \n",inimigo_1[x].nome);
         printf("Nome classe: %s \n",inimigo_1[x].classe);
         printf("__________ vida: %s ____________\n",inimigo_1[x].vida);
@@ -306,25 +306,77 @@ int batalha(int x) //para saber qual inimigo usei o "x", é só passar o valor a
         switch (menuNav)
         {
         case 1:
-            /* code */
+            printf("%s decide atacar", personagem_principal.nome);
+            dadoGerado = dado();
+            if (dadoGerado > 3)
+            {
+                int dano = personagem_principal.ataque - inimigo_1[x].vida;
+                inimigo_1[x].vida = dano;
+            }else{
+                printf("valor da jogada: %d", dadoGerado);
+                printf("%s errou o ataque", personagem_principal.nome);
+            }
+
             break;
         
         case 2:
-            /* code */
+            printf("%s decide fugir", personagem_principal.nome);
+            dadoGerado = dado();
+
+             if (dadoGerado > 5)
+            {
+               printf("%s consegue fugir", personagem_principal.nome);
+               sleep(4);
+               andar();
+            }
+
             break;
         
         case 3:
-            /* code */
+            printf("%s decide defender", personagem_principal.nome);
+            dadoGerado = dado();
+
+            
+             if (dadoGerado > 3)
+            {
+                defesa = 1; 
+            }
+
             break;
         }
 
         //agora a vez do inimigo:
 
-        printf("Turno do advesário!");
+        printf("Turno do advesário! \n");
 
+        int dadoGerado = dado_2;
+
+        if (dado_2 == 3) //ataque forte, quebra a defesa
+        {
+           int dano = personagem_principal.vida - inimigo_1[x].ataque;
+           personagem_principal.vida = dano;
+
+        }else if (dado_2 == 2)  //ataque medio
+        {
+            
+            if (defesa = 1 )
+            {
+                printf("%s ataca, mas %s consegue defender", personagem_principal.nome, inimigo_1[x].nome);
+            }
+            
+            else{
+                
+                int dano = personagem_principal.vida - inimigo_1[x].ataque;
+                personagem_principal.vida = dano;
+
+            }
+        }else if (dado_2 == 1) //errar
+        {
+            printf("%s errou", inimigo_1[x].nome);
+            sleep(5);
+        }
         
-
-
+        
 
     } while (personagem_principal.vida != 0 || inimigo_1[x].vida != 0 );
     
