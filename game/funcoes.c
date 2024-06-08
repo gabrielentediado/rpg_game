@@ -285,6 +285,9 @@ void sala(){
 
 }
 
+int dano;
+int dadoGerado_2;
+
 int batalha(int x) //para saber qual inimigo usei o "x", é só passar o valor ao chamar a função
 {
 
@@ -295,12 +298,13 @@ int batalha(int x) //para saber qual inimigo usei o "x", é só passar o valor a
    
     do
     {
-        int dadoGerado_2;
+       
+
         system("cls");
         int defesa = 0;
         printf("\t\t\tNome do inimigo: %s \n",inimigo_1[x].nome);
         printf("\t\t\tNome classe: %s \n",inimigo_1[x].classe);
-        printf("_\t\t\t_________ vida: %d ____________\n",inimigo_1[x].vida);
+        printf("\t\t\t_________ vida: %d ____________\n",inimigo_1[x].vida);
 
         printf("%s", combate);
 
@@ -314,11 +318,16 @@ int batalha(int x) //para saber qual inimigo usei o "x", é só passar o valor a
             dadoGerado = dado();
             if (dadoGerado > 3)
             {
-                int dano = personagem_principal.ataque - inimigo_1[x].vida;
+                printf("valor da jogada: %d \n", dadoGerado);
+                printf("%s ecertou o ataque. \n", personagem_principal.nome);
+
+                dano =  inimigo_1[x].vida - personagem_principal.ataque;
+
                 inimigo_1[x].vida = dano;
             }else{
                 printf("valor da jogada: %d \n", dadoGerado);
                 printf("%s errou o ataque \n", personagem_principal.nome);
+                puts("");
             }
 
             break;
@@ -332,6 +341,12 @@ int batalha(int x) //para saber qual inimigo usei o "x", é só passar o valor a
                printf("%s consegue fugir \n", personagem_principal.nome);
                sleep(4);
                andar();
+
+            }else{
+
+                printf("não foi possivel fugir \n ");
+                puts("");
+                sleep(1);
             }
 
             break;
@@ -343,7 +358,16 @@ int batalha(int x) //para saber qual inimigo usei o "x", é só passar o valor a
             
              if (dadoGerado > 3)
             {
-                defesa = 1; 
+                defesa = 1;
+                printf("valor da jogada: %d \n", dadoGerado);
+                printf("%s adquirou um ponto de defasa \n", personagem_principal.nome);
+                sleep(3);
+
+            }else{
+
+                printf("valor da jogada: %d \n", dadoGerado);
+                printf("%s não foi possivel adquirir um ponto de defasa \n", personagem_principal.nome);
+                sleep(3);
             }
 
             break;
@@ -352,46 +376,48 @@ int batalha(int x) //para saber qual inimigo usei o "x", é só passar o valor a
         //agora a vez do inimigo:
         
         printf("Turno do advesário! \n");
+        dadoGerado_2 = dado_2();
+        printf("dado do adversario: %d \n", dadoGerado_2);
 
         sleep(4);
 
-        dadoGerado_2 = dado_2;
-
-        if (dado_2 == 3) //ataque forte, quebra a defesa
+        if (dadoGerado_2 == 3) //ataque forte, quebra a defesa
         {
             printf("%s atacou \n", inimigo_1[x].nome);
-            sleep(5);
-            int dano = personagem_principal.vida - inimigo_1[x].ataque;
+            dano = personagem_principal.vida - inimigo_1[x].ataque;
             personagem_principal.vida = dano;
-            break;
+            sleep(5);
+            
 
-        }else if (dado_2 == 2)  //ataque medio
+        }else if (dadoGerado_2== 2)  //ataque medio
         {
             
             if (defesa == 1 )
             {
-                printf("%s ataca, mas %s consegue defender\n", personagem_principal.nome, inimigo_1[x].nome);
-                sleep(10);
-                break;
+                printf("%s ataca, mas %s consegue defender\n", inimigo_1[x].nome, personagem_principal.nome);
+                sleep(5);
+                
             }
             
             else{
                 
+                printf("O inimigo te acerta \n");
                 int dano = personagem_principal.vida - inimigo_1[x].ataque;
                 personagem_principal.vida = dano;
-                break;
+                sleep(5);
+                
 
             }
-        }else if (dado_2 == 1) //errar
+        }else if (dadoGerado_2 == 1) //errar
         {
             printf("%s errou \n", inimigo_1[x].nome);
             sleep(5);
-            break;
+            
         }
         
-        
+        sleep(5);
 
-    } while (personagem_principal.vida != 0 || inimigo_1[x].vida > 0);
+    } while (personagem_principal.vida > 0 || inimigo_1[x].vida > 0);
 
     morte();
     

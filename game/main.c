@@ -217,7 +217,7 @@ int main(){
         
         strcpy(personagem_principal.nome, "dev");
         strcpy(personagem_principal.classe, "Humano");
-        personagem_principal.vida=999;
+        personagem_principal.vida=10;
         personagem_principal.ataque=5;
 
         verificador = 1; 
