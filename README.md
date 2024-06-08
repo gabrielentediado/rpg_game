@@ -4,4 +4,8 @@ Etapas de excução:
 
 1 - abre a pasta game
 
-2
+2 - arir a pasta output
+
+3 - executar o main.c
+
+O jogo executará no terminal.
