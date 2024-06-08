@@ -6,6 +6,6 @@ Etapas de excução:
 
 2 - arir a pasta output
 
-3 - executar o main.c
+3 - executar o main.exe
 
 O jogo executará no terminal.
