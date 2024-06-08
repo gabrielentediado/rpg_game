@@ -10,12 +10,21 @@
 #include "funcao_nao_imp.h"
 #include "personagem_atributos.h"
 
-
+//dado de 6 lados
 int dado(void){
 
     srand(time(NULL));
 
     return((rand() % 6) + 1);
+
+}
+
+//dado de 3 lados
+int dado_2(void){
+
+    srand(time(NULL));
+
+    return((rand() % 3) + 1);
 
 }
 
@@ -150,7 +159,8 @@ int cadastro(){
 
 int quarto(){
 
-    
+        int verificador_bau_tentativa = 0; // para impedir dele tentar abrir o bau varias vezes (apenas uma tentativa)
+
         if(verificador == 0){ // para entrar no quarto ele precisa entrar na sala primeiro
 
             puts("Você decide entrar no quarto, entretanto a porta esta trancada e não há formas de entrar\n\n");
@@ -176,19 +186,19 @@ int quarto(){
 
             scanf("%d", &menuNav);
 
-            int dadoGerado = dado();
-
 
             if (menuNav == 1){
-
+   
                 // dado gerado
+                dadoGerado = dado();
 
-
-                Personagem_inventario inv;
+                
                 
 
-                if(dadoGerado >= 4){
-                    
+                if(dadoGerado >= 4 && verificador_bau_tentativa == 0){
+
+                    verificador_bau_tentativa = 1;
+
                     sleep(1);
                     printf("valor da jogadada do dado : %d \n", dadoGerado); // mostra o valor do dado
                     
@@ -204,6 +214,7 @@ int quarto(){
                     opcoes();
                     
                 } else {
+                    verificador_bau_tentativa = 1; 
 
                     sleep(1);
                     printf("valor da jogadada do dado : %d \n", dadoGerado); // mostra o valor do dado
@@ -214,6 +225,12 @@ int quarto(){
                     sleep(10);
                     opcoes();
                 }
+
+            }else if(menuNav == 2){
+                
+                printf("vamos sair da casa \n");
+                sleep(10);
+                opcoes();
 
             }
 
@@ -275,20 +292,47 @@ int batalha(int x) //para saber qual inimigo usei o "x", é só passar o valor a
 
     printf("tenta dar uma passo, mas do escuro aparece algo, um mostro vindo em sua direção \n");
     sleep(10);
-
+   
     do
     {
         system("cls");
+
+        printf("Nome do inimigo: %s \n",inimigo_1[x].nome);
+        printf("Nome classe: %s \n",inimigo_1[x].classe);
+        printf("__________ vida: %s ____________\n",inimigo_1[x].vida);
+
         printf("%s", combate);
+        scanf("%d", menuNav);
+        switch (menuNav)
+        {
+        case 1:
+            /* code */
+            break;
+        
+        case 2:
+            /* code */
+            break;
+        
+        case 3:
+            /* code */
+            break;
+        }
+
+        //agora a vez do inimigo:
+
+        printf("Turno do advesário!");
+
+        
 
 
-    } while (personagem_principal.vida != 0 || inimigo_1[x].vida != 0);
+
+    } while (personagem_principal.vida != 0 || inimigo_1[x].vida != 0 );
     
 }
 
 int morte()
 {
 
-
+    printf("se fudeu \n"); //kkkkk
 
 }

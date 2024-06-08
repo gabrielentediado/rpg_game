@@ -32,6 +32,7 @@ typedef struct
 
 }Personagem_inventario;
 
+Personagem_inventario inv;
 
 
 

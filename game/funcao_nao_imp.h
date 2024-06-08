@@ -22,6 +22,25 @@ char combate[] =
 "\t\t\t|  ATACAR - 1      FUGIR - 2      3 - DEFENDER    |\n"
 "\t\t\t _________________________________________________\n";
 
-int menuNav; // variavel para navegacao entre menus
+char mapa[] =
+"\t\t\t ________________________________________________________\n"
+"\t\t\t|                                                        |\n"
+"\t\t\t|                                                        |\n"
+"\t\t\t|                                                        |\n"
+"\t\t\t|                                                        |\n"
+"\t\t\t|                                                        |\n"
+"\t\t\t|                                                        |\n"
+"\t\t\t|                                                        |\n"
+"\t\t\t|                                                        |\n"
+"\t\t\t|                                                        |\n"
+"\t\t\t|                                                        |\n"
+"\t\t\t|                                                        |\n"
+"\t\t\t|                                                        |\n"
+"\t\t\t|                                                        |\n"
+"\t\t\t|                                                        |\n"
+"\t\t\t ________________________________________________________\n"
+;
 
+int menuNav; // variavel para navegacao entre menus
+int dadoGerado;
 #endif

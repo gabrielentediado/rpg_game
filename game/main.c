@@ -31,7 +31,8 @@
 
 //                   testando o combate
 void andar(){
-    int dadoGerado = dado();
+
+    dadoGerado = dado();
 
     //tranformei os inimigos em vetores, para possibilitar colocar vários inimigos, pensei em fazer com os ponteiros também
     inimigo_1[0].ataque = 1;
@@ -72,11 +73,11 @@ void andar(){
                 batalha(i);
             }
             
-        break;  
+            break;  
         
         case 2:
             batalha(i); 
-        break;
+            break;
 
         }
     }
@@ -163,7 +164,17 @@ int  opcoes()
         andar(); //no arquivo funções
         break;
     case 2:
-        explorarCasa();  // primeiro terá que explorar a casa (no arquivo funções)
+        if (inv.pergaminho == 1) // para evitar de ficar explorando a casa
+        {
+            printf("a casa já foi explorada, vamos sair \n");
+            sleep(10);
+            opcoes();
+        }else{
+
+            explorarCasa();   // primeiro terá que explorar a casa (no arquivo funções)
+
+        }
+
         break; //tinha apagado os breaks sem querer ao passar as funções
     default:
         opcoes(); 
