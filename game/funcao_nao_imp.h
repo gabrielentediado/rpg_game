@@ -7,6 +7,7 @@ int dado(void);
 
 int cadastro();
 
+int verificador=0; // essa variavel coloquei para ser um true/false, por exemplo na primeira parte, para ele conseguir andar precisa explorar a casa primeiro
 
 //titulo
 char titulo[] = 
@@ -15,6 +16,31 @@ char titulo[] =
 "\t\t\t|                       RPG                       |\n"
 "\t\t\t| - - - - - - - - - - - - - - - - - - - - - - - - |\n"; // titulo para deixar os menus bonitinhos
 
-int menuNav; // variavel para navegacao entre menus
+char combate[] = 
+"\t\t| - - - - - - - - - - - - - - - - - - - - - - - - |\n"
+"\t\t|                                                 |\n"
+"\t\t|  ATACAR - 1      FUGIR - 2      3 - DEFENDER    |\n"
+"\t\t|___________________        ______________________|\n";
 
+char mapa[] =
+"\t\t\t ________________________________________________________\n"
+"\t\t\t|                                                        |\n"
+"\t\t\t|                                                        |\n"
+"\t\t\t|                                                        |\n"
+"\t\t\t|                                                        |\n"
+"\t\t\t|                                                        |\n"
+"\t\t\t|                                                        |\n"
+"\t\t\t|                                                        |\n"
+"\t\t\t|                                                        |\n"
+"\t\t\t|                                                        |\n"
+"\t\t\t|                                                        |\n"
+"\t\t\t|                                                        |\n"
+"\t\t\t|                                                        |\n"
+"\t\t\t|                                                        |\n"
+"\t\t\t|                                                        |\n"
+"\t\t\t ________________________________________________________\n"
+;
+
+int menuNav; // variavel para navegacao entre menus
+int dadoGerado;
 #endif
