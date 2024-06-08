@@ -60,7 +60,7 @@ int cadastro(){
     {
         system("cls");
 
-        printf("%s", titulo);
+        printf("%s", titulo_1);
 	    printf("\t\t\t|           Visualize as classes:                 |\n");
 	    printf("\t\t\t|    1 - Para Mago                                |\n");
         printf("\t\t\t|    2 - Para Humano                              |\n");
@@ -73,7 +73,7 @@ int cadastro(){
         {
         case 1:
             
-            printf("%s", titulo);
+            printf("%s", titulo_1);
             printf("\t\t\t|                  MAGO                           |\n");
             printf("\t\t\t|    VIDA: 15HP                                   |\n");
             printf("\t\t\t|    DANO: 3HP                                    |\n");
@@ -99,7 +99,7 @@ int cadastro(){
 
         case 2:
 
-            printf("%s", titulo);
+            printf("%s", titulo_1);
             printf("\t\t\t|                  HUMANO                         |\n");
             printf("\t\t\t|    VIDA: 9HP                                    |\n");
             printf("\t\t\t|    DANO: 6HP                                    |\n");
@@ -124,7 +124,7 @@ int cadastro(){
         case 3:
 
 
-            printf("%s", titulo);
+            printf("%s", titulo_1);
             printf("\t\t\t|                  ELFO                           |\n");
             printf("\t\t\t|    VIDA: 10HP                                   |\n");
             printf("\t\t\t|    DANO: 4HP                                    |\n");
@@ -432,4 +432,86 @@ int morte()
     printf("morreu \n"); 
 
 }
+/*
+int animation_1(){
+    system("cls");
+    printf("%s", titulo_1);
+    sleep(1);
+    animation_2();
+ 
+   
+}
 
+int animation_2(){
+
+    system("cls");
+    printf("%s", titulo_2);
+    sleep(1);
+    animation_3();
+}
+
+int animation_3(){
+
+    system("cls");
+    printf("%s", titulo_3);
+    sleep(1);
+    animation_4();
+    
+    
+}
+
+int animation_4(){
+    system("cls");
+    printf("%s", titulo_4);
+    sleep(1);
+    animation_1();
+ 
+}
+*/
+
+animation(){
+    
+   for (int j = 0; j < 2; j++)
+   {
+    for (int i = 0; i <=4; i++){
+            switch (i){
+            case 0:
+                system("cls");
+                printf("%s", titulo_1);
+                sleep(1);
+                
+                break;
+            case 1:
+                system("cls");
+                printf("%s", titulo_2);
+                sleep(1);
+                
+                break;
+            case 2:
+                system("cls");
+                printf("%s", titulo_3);
+                sleep(1);
+                
+                break;
+            case 3:
+                system("cls");
+                printf("%s", titulo_4);
+                sleep(1);
+                
+                break;
+
+            case 4:
+                system("cls");
+                printf("%s", titulo_1);
+                sleep(1);
+                
+                break;
+            
+            default:
+                break;
+            }
+       
+        }
+   }
+   
+}

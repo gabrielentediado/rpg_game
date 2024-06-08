@@ -190,7 +190,10 @@ int main(){
     setlocale (LC_ALL, "Portuguese");
     int lingua;
     personagem_principal.vida = 0;
-    printf("%s", titulo);
+
+    animation(); // fiz uma simples animação 
+    //printf("%s", titulo_1);
+
     sleep(2);
     printf("\t\t\t|_________________________________________________|\n");
 	printf("\t\t\t|                                                 |\n");
@@ -218,6 +221,7 @@ int main(){
 
         verificador = 1; 
         andar();
+        
         break;
 
     default:
