@@ -1,6 +1,6 @@
 Embarque neste jornada, descubra mistérios. 
 
-Etapas de excução:
+Etapas de execução:
 
 1 - abre a pasta game
 
