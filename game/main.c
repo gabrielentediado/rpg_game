@@ -19,18 +19,10 @@
 
 #include "funcoes.c"
 
-//                            _       
-//                           | |      
-//  _ __ ___  _   _ _ __   __| | ___  
-// | '_ ` _ \| | | | '_ \ / _` |/ _ \ 
-// | | | | | | |_| | | | | (_| | (_) |
-// |_| |_| |_|\__,_|_| |_|\__,_|\___/ 
-
-
+int i = 0; //tirei de dentro da função
 //andar
 
-//                   testando o combate
-void andar(){
+void andar(i){
 
     dadoGerado = dado();
 
@@ -39,7 +31,6 @@ void andar(){
     inimigo_1[0].vida = 10;
     strcpy(inimigo_1[0].nome, "dath");
     strcpy(inimigo_1[0].classe, "monstro");
-    int i=0;
 
     if(verificador == 0){
         getchar(); //buffer
@@ -60,12 +51,10 @@ void andar(){
         {
         case 1:
 
-            
-
             if (dadoGerado > 2){
                 printf("dado gerado: %d", dadoGerado);
-                printf("Parece que o caminho está limpo ");
-            
+                printf("Parece que o caminho está limpo \n");
+                sleep(5);
             }else{
                 printf("dado gerado: %d", dadoGerado);
                 sleep(10);
@@ -92,8 +81,8 @@ void explorarCasa(){
     system("cls");
     puts("\n\n*Você decide explorar a casa...*");
     sleep(1);
-    puts("Qual cômodo deseja explorar?");
-    printf("1 - Quarto\n2 - Sala principal - \n 3 voltar para o menu\n");
+    puts("Qual lugar da casa deseja explorar? \n");
+    printf("1 - Quarto\n2 - Sala principal \n3- voltar para o menu\n");
     scanf("%d", &menuNav);
 
     switch (menuNav){
@@ -123,6 +112,16 @@ void explorarCasa(){
     }
 
 }
+
+
+//                            _       
+//                           | |      
+//  _ __ ___  _   _ _ __   __| | ___  
+// | '_ ` _ \| | | | '_ \ / _` |/ _ \ 
+// | | | | | | |_| | | | | (_| | (_) |
+// |_| |_| |_|\__,_|_| |_|\__,_|\___/ 
+
+
 //main -> cadastro -> mundo
 void mundo(){
 
@@ -147,8 +146,7 @@ void mundo(){
 
 //main -> cadastro -> mundo -> opções -> (andar ou explorar casa)
 
-int  opcoes()
-{
+int  opcoes(){
     system("cls");
 
     puts("Menu: ");
@@ -171,7 +169,6 @@ int  opcoes()
         }else{
 
             explorarCasa();   // primeiro terá que explorar a casa (no arquivo funções)
-
         }
 
         break; //tinha apagado os breaks sem querer ao passar as funções

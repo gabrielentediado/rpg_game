@@ -156,10 +156,11 @@ int cadastro(){
 }
 
 // quarto
+int verificador_bau_tentativa = 0;
 
 int quarto(){
 
-        int verificador_bau_tentativa = 0; // para impedir dele tentar abrir o bau varias vezes (apenas uma tentativa)
+         // para impedir dele tentar abrir o bau varias vezes (apenas uma tentativa)
 
         if(verificador == 0){ // para entrar no quarto ele precisa entrar na sala primeiro
 
@@ -191,9 +192,6 @@ int quarto(){
    
                 // dado gerado
                 dadoGerado = dado();
-
-                
-                
 
                 if(dadoGerado >= 4 && verificador_bau_tentativa == 0){
 
@@ -234,9 +232,7 @@ int quarto(){
 
             }
 
-
         }
-        
 }
 
 //sala
@@ -310,7 +306,7 @@ int batalha(int x) //para saber qual inimigo usei o "x", é só passar o valor a
     switch (menuNav)
     {
     case 1:
-        printf("%s decide atacar", personagem_principal.nome);
+        printf("%s decide atacar\n", personagem_principal.nome);
         dadoGerado = dado();
         if (dadoGerado > 3)
         {
@@ -369,15 +365,17 @@ int batalha(int x) //para saber qual inimigo usei o "x", é só passar o valor a
         break;
     }
 
-    //para saber se o inimigo morreu ou personagem morreu
+    //para saber se o inimigo morreu ou personagem morreu, dois casos possiveis: 
 
     if (personagem_principal.vida == 0 || personagem_principal.vida<0)
     {
-        morte();
+        morte(); //perder
     }else if(inimigo_1[x].vida == 0 || inimigo_1[x].vida<0){
         printf("você conseguiu \n");
         sleep(5);
-        andar();
+        //ganhar passa para o proximo inimigo
+        //x++; para colocar mais inimigos vai ter só que fazer isso
+        andar(/*x*/);
     }
     //agora a vez do inimigo:
     
@@ -434,3 +432,4 @@ int morte()
     printf("morreu \n"); 
 
 }
+
