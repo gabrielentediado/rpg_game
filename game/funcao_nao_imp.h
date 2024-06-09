@@ -3,6 +3,8 @@
 
 //espaço para declarar as funções
 
+//testetestetestetestetestetestetestetesteteste
+
 int dado(void);
 
 int cadastro();

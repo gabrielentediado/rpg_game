@@ -287,8 +287,6 @@ int dadoGerado_2;
 int batalha(int x) //para saber qual inimigo usei o "x", é só passar o valor ao chamar a função
 {
 
-   
-
     printf("tenta dar uma passo, mas do escuro aparece algo, um %s vindo em sua direção \n", inimigo_1[x].classe);
     sleep(5);
 
@@ -330,12 +328,14 @@ int batalha(int x) //para saber qual inimigo usei o "x", é só passar o valor a
 
             if (dadoGerado > 5)
         {
+            printf("valor da jogada: %d \n", dadoGerado);
             printf("%s consegue fugir \n", personagem_principal.nome);
             sleep(4);
-            andar();
+            x++; 
+            andar(x);
 
         }else{
-
+            printf("valor da jogada: %d \n", dadoGerado);
             printf("não foi possivel fugir \n ");
             puts("");
             sleep(1);
@@ -350,7 +350,7 @@ int batalha(int x) //para saber qual inimigo usei o "x", é só passar o valor a
         
             if (dadoGerado > 3)
         {
-            defesa = 1;
+            defesa = 1; //ganha um de defesa
             printf("valor da jogada: %d \n", dadoGerado);
             printf("%s adquirou um ponto de defasa \n", personagem_principal.nome);
             sleep(3);
@@ -374,8 +374,8 @@ int batalha(int x) //para saber qual inimigo usei o "x", é só passar o valor a
         printf("você conseguiu \n");
         sleep(5);
         //ganhar passa para o proximo inimigo
-        //x++; para colocar mais inimigos vai ter só que fazer isso
-        andar(/*x*/);
+        x++; //para colocar mais inimigos vai ter só que fazer isso
+        andar(x);
     }
     //agora a vez do inimigo:
     
@@ -479,3 +479,4 @@ animation(){
    }
    
 }
+

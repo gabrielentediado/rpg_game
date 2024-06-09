@@ -19,18 +19,38 @@
 
 #include "funcoes.c"
 
-int i = 0; //tirei de dentro da função
+ 
 //andar
 
-void andar(i){
+//quando, o inimigo morrer ou o personagem fugir incrementa em 1 o x e esse valor passa o i e o prt recebe o local da varievel.
+void andar(int i) //andar com o dado, dar um passo ou batalhar, por equanto
+{
 
     dadoGerado = dado();
 
+    int *prt = &i; 
     //tranformei os inimigos em vetores, para possibilitar colocar vários inimigos, pensei em fazer com os ponteiros também
+
+    inimigo_1[*prt].ataque;
+    inimigo_1[*prt].vida;
+    inimigo_1[*prt].nome;
+    inimigo_1[*prt].classe;
+    
+
+    //teste: 
+
+    //coloquei dois para testar, na função andar a gente pode colar que quando ele andar umas determinadas vezes ele encontra um local novo e quando chegar ao limite o jogo acaba
     inimigo_1[0].ataque = 1;
     inimigo_1[0].vida = 10;
     strcpy(inimigo_1[0].nome, "dath");
     strcpy(inimigo_1[0].classe, "monstro");
+
+    inimigo_1[1].ataque = 1;
+    inimigo_1[1].vida = 10;
+    strcpy(inimigo_1[1].nome, "dath_2");
+    strcpy(inimigo_1[1].classe, "monstro");
+
+
 
     if(verificador == 0){
         getchar(); //buffer
@@ -42,7 +62,7 @@ void andar(i){
     } 
     else{
         printf("continuar daqui.");
-
+        //se quiserem colocar a opção de poder voltar pro menu vai ter que mexer no código, se ele conseguir voltar quebra, pois tá passando 0 ao chamar o andar(0); no menu
         printf("Jogue o dado para dar um passo adiante \n");
         printf("aparte 1 para jogar o dado ou 2 para ir sem a sorte \n");
         scanf("%d", &menuNav);
@@ -59,13 +79,13 @@ void andar(i){
                 printf("dado gerado: %d", dadoGerado);
                 sleep(10);
                 
-                batalha(i);
+                batalha(i); //o valor de i passa para a função batalha(int x) e permite identificar o inimigo
             }
             
             break;  
         
         case 2:
-            batalha(i); 
+            batalha(i); //o valor de i passa para a função batalha(int x) e permite identificar o inimigo
             break;
 
         }
@@ -158,7 +178,7 @@ int  opcoes(){
     switch (menuNav)
     {
     case 1:
-        andar(); //no arquivo funções
+        andar(0); //depois de ter explorado a casa ele pode andar
         break;
     case 2:
         if (inv.pergaminho == 1) // para evitar de ficar explorando a casa
@@ -187,11 +207,12 @@ int  opcoes(){
 // |_| |_| |_|\__,_|_|_| |_|
           
 int main(){
+
     setlocale (LC_ALL, "Portuguese");
     int lingua;
     personagem_principal.vida = 0;
 
-    animation(); // fiz uma simples animação 
+    animation();
     //printf("%s", titulo_1);
 
     sleep(2);
@@ -212,7 +233,7 @@ int main(){
         cadastro(); //no arquivo funções
         break;
     case 2:
-        //para testes
+        //para testes DESENVOLVIMENTO:
         
         strcpy(personagem_principal.nome, "dev");
         strcpy(personagem_principal.classe, "Humano");
@@ -220,7 +241,7 @@ int main(){
         personagem_principal.ataque=5;
 
         verificador = 1; 
-        andar();
+        andar(0); //coloquei zero pra iniciar no primeiro inimigo - só lembra de passar todos os parametros que a função utiliza
         
         break;
 

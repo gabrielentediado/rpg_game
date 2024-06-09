@@ -20,7 +20,10 @@ typedef struct //estrura para colocar as informaçoes do jogador e também de in
 
 Personagem_atributos personagem_principal; //passei pra uma varievel global
 
-Personagem_atributos inimigo_1[10]; //inimigo 1, por equanto o máximo de inimigos é 10, mas pode aumentar se quiser
+Personagem_atributos inimigo_1[10]; //inimigos, por equanto o máximo de inimigos é 10, mas pode aumentar se quiser
+
+
+
 
 // inventario do jogador, usei numeros para verificar se ele tem ou não, exemplo o primeiro pergaminho é 1, então quando for para usar
 // so precisa verificar se o pergaminho que ele tem é o 1, 2,3 e etc, mesma coisa com outros itens. No caso de espadas é melhor aumentar direto
