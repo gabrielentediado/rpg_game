@@ -43,23 +43,17 @@ int cadastro(){
     int escolha;
 
     Personagem_atributos personagem_principal;
-
     puts("*Depois de uma longa noite, o escolhido finalmente acorda...\n");
-    
     sleep(2);
     getchar();//limpar o buffer
-
     printf("Como deveriamos lhe chamar?\n");
     scanf("%19[^\n]s", &personagem_principal.nome);
-    
-
     printf("que bom que acordou, bem-vindo de volta %s \n", personagem_principal.nome);
     sleep(5);
 
     do
     {
         system("cls");
-
         printf("%s", titulo_1);
 	    printf("\t\t\t|           Visualize as classes:                 |\n");
 	    printf("\t\t\t|    1 - Para Mago                                |\n");
@@ -86,10 +80,8 @@ int cadastro(){
             if (escolha == 1)
             {
                 strcpy(personagem_principal.classe, "mago");
-
                 personagem_principal.vida = 15;
                 personagem_principal.ataque = 3;
-
                 mundo();
                 
             }
@@ -111,10 +103,8 @@ int cadastro(){
             if (escolha == 1)
             {
                 strcpy(personagem_principal.classe, "Humano");
-
                 personagem_principal.vida=9;
                 personagem_principal.ataque=6;
-
                 mundo();
             }
             
@@ -133,26 +123,18 @@ int cadastro(){
             printf("1 - Escolher \n2 - Sair\n");
 
             scanf("%d", &escolha);
-            
 
             if (escolha == 1)
             {
                 strcpy(personagem_principal.classe, "Elfo");
-                
                 personagem_principal.vida = 10;
                 personagem_principal.ataque = 4;
-
                 mundo();
             }
-            
-
             break;
-
         }
-
     }while(escolha != 1);
     
-
 }
 
 // quarto
