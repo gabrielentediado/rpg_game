@@ -137,12 +137,12 @@ int cadastro(){
     
 }
 
-// quarto
-int verificador_bau_tentativa = 0;
+int verificador_bau_tentativa = 0;// para impedir dele tentar abrir o bau varias vezes (apenas uma tentativa)
 
+// quarto
 int quarto(){
 
-         // para impedir dele tentar abrir o bau varias vezes (apenas uma tentativa)
+         
 
         if(verificador == 0){ // para entrar no quarto ele precisa entrar na sala primeiro
 

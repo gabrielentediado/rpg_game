@@ -39,17 +39,22 @@ void andar(int i) //andar com o dado, dar um passo ou batalhar, por equanto
 
     //teste: 
 
-    //coloquei dois para testar, na função andar a gente pode colar que quando ele andar umas determinadas vezes ele encontra um local novo e quando chegar ao limite o jogo acaba
+    //coloquei mais 2 para testar,
+    //se quisermos futaramente colocar, tipo: ele anda x vezes e ganha ou anda x vezes e descobre um local novo
     inimigo_1[0].ataque = 1;
     inimigo_1[0].vida = 10;
-    strcpy(inimigo_1[0].nome, "dath");
+    strcpy(inimigo_1[0].nome, "Dath");
     strcpy(inimigo_1[0].classe, "monstro");
 
-    inimigo_1[1].ataque = 1;
+    inimigo_1[1].ataque = 2;
     inimigo_1[1].vida = 10;
-    strcpy(inimigo_1[1].nome, "dath_2");
+    strcpy(inimigo_1[1].nome, "Fangoroth");
     strcpy(inimigo_1[1].classe, "monstro");
 
+    inimigo_1[2].ataque = 2;
+    inimigo_1[2].vida = 15;
+    strcpy(inimigo_1[2].nome, "Zephyrion");
+    strcpy(inimigo_1[2].classe, "monstro");
 
 
     if(verificador == 0){
