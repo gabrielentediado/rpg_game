@@ -10,7 +10,6 @@
 #include "funcao_nao_imp.h"
 #include "personagem_atributos.h"
 
-
 //dado de 6 lados
 int dado(){
 
@@ -37,7 +36,7 @@ int dado_2(){
 //  \___\__,_|\__,_|\__,_|___/\__|_|  \___/ 
                                          
 //main -> cadastro
-void cadastro(){ // mudei para tipo void pois não estava retornando valor
+void cadastro(){
     
     system("cls");
 
@@ -141,7 +140,7 @@ void cadastro(){ // mudei para tipo void pois não estava retornando valor
 int verificador_bau_tentativa = 0;// para impedir dele tentar abrir o bau varias vezes (apenas uma tentativa)
 
 // quarto
-int quarto(){
+void quarto(){
 
          
 
@@ -259,9 +258,6 @@ void sala(){
             }
             
         }
-
-
-
 }
 
 int dano;
@@ -350,7 +346,7 @@ int batalha(int x) //para saber qual inimigo usei o "x", é só passar o valor a
 
     //para saber se o inimigo morreu ou personagem morreu, dois casos possiveis: 
 
-    if (personagem_principal.vida >=0)
+    if (personagem_principal.vida == 0 || personagem_principal.vida<0)
     {
         morte(); //perder
     }else if(inimigo_1[x].vida == 0 || inimigo_1[x].vida<0){
@@ -429,7 +425,7 @@ void morte()
 
 }
 
-void animation(){ //tinha esquecido de declarar o tipo da função
+void animation(){
     
    for (int j = 0; j < 2; j++)
    {
@@ -437,28 +433,28 @@ void animation(){ //tinha esquecido de declarar o tipo da função
             switch (i){
             case 0:
                 system("cls");
-                system("clear");
+                system("clear"); //limpar no linux
                 printf("%s", titulo_1);
                 sleep(1);
                 
                 break;
             case 1:
                 system("cls");
-                system("clear");
+                system("clear"); //limpar no linux
                 printf("%s", titulo_2);
                 sleep(1);
                 
                 break;
             case 2:
                 system("cls");
-                system("clear");
+                system("clear"); //limpar no linux
                 printf("%s", titulo_3);
                 sleep(1);
                 
                 break;
             case 3:
                 system("cls");
-                system("clear");
+                system("clear"); //limpar no linux
                 printf("%s", titulo_4);
                 sleep(1);
                 
@@ -466,7 +462,7 @@ void animation(){ //tinha esquecido de declarar o tipo da função
 
             case 4:
                 system("cls");
-                system("clear");
+                system("clear"); //limpar no linux
                 printf("%s", titulo_1);
                 sleep(1);
                 
