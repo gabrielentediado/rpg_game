@@ -5,9 +5,16 @@
 
 
 int dado(void);
+int dado2(void);
+void cadastro();
+int quarto();
+void sala();
+int batalha(int x);
+void morte();
+void animation();
 
-int cadastro();
 
+//variavel global
 int verificador=0; // essa variavel coloquei para ser um true/false, por exemplo na primeira parte, para ele conseguir andar precisa explorar a casa primeiro
 
 //titulo
@@ -58,9 +65,10 @@ char mapa[] =
 "\t\t\t|                                                        |\n"
 "\t\t\t|                                                        |\n"
 "\t\t\t|                                                        |\n"
-"\t\t\t ________________________________________________________\n"
-;
+"\t\t\t ________________________________________________________\n ";
 
-int menuNav; // variavel para navegacao entre menus
+int menuNav; // variavel global para navegacao entre menus
+
 int dadoGerado; //variavel global para dados
+
 #endif

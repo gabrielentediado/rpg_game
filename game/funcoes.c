@@ -10,6 +10,7 @@
 #include "funcao_nao_imp.h"
 #include "personagem_atributos.h"
 
+
 //dado de 6 lados
 int dado(){
 
@@ -36,7 +37,7 @@ int dado_2(){
 //  \___\__,_|\__,_|\__,_|___/\__|_|  \___/ 
                                          
 //main -> cadastro
-int cadastro(){
+void cadastro(){ // mudei para tipo void pois não estava retornando valor
     
     system("cls");
 
@@ -349,7 +350,7 @@ int batalha(int x) //para saber qual inimigo usei o "x", é só passar o valor a
 
     //para saber se o inimigo morreu ou personagem morreu, dois casos possiveis: 
 
-    if (personagem_principal.vida == 0 || personagem_principal.vida<0)
+    if (personagem_principal.vida >=0)
     {
         morte(); //perder
     }else if(inimigo_1[x].vida == 0 || inimigo_1[x].vida<0){
@@ -408,14 +409,27 @@ int batalha(int x) //para saber qual inimigo usei o "x", é só passar o valor a
 
 }
 
-int morte()
+void morte()
 {
 
-    printf("morreu \n"); 
+    printf("%s morreu \n", personagem_principal.nome); 
+    printf("Tentar novamente \n aperte: 1 \n para desitir aperte: 2");
+    scanf("%d", menuNav);
+    switch (menuNav)
+    {
+    case 1:
+        printf("%s", personagem_principal.nome);   
+        opcoes();
+        break;
+    
+    case 2:
+        printf("A sua historia acaba por aqui \n Obrigado por ter jogado");
+        break;
+    }
 
 }
 
-animation(){
+void animation(){ //tinha esquecido de declarar o tipo da função
     
    for (int j = 0; j < 2; j++)
    {
@@ -423,24 +437,28 @@ animation(){
             switch (i){
             case 0:
                 system("cls");
+                system("clear");
                 printf("%s", titulo_1);
                 sleep(1);
                 
                 break;
             case 1:
                 system("cls");
+                system("clear");
                 printf("%s", titulo_2);
                 sleep(1);
                 
                 break;
             case 2:
                 system("cls");
+                system("clear");
                 printf("%s", titulo_3);
                 sleep(1);
                 
                 break;
             case 3:
                 system("cls");
+                system("clear");
                 printf("%s", titulo_4);
                 sleep(1);
                 
@@ -448,6 +466,7 @@ animation(){
 
             case 4:
                 system("cls");
+                system("clear");
                 printf("%s", titulo_1);
                 sleep(1);
                 

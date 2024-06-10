@@ -19,7 +19,7 @@
 
 #include "funcoes.c"
 
- 
+
 //andar
 
 //quando, o inimigo morrer ou o personagem fugir incrementa em 1 o x e esse valor passa o i e o prt recebe o local da varievel.
@@ -101,6 +101,7 @@ void andar(int i) //andar com o dado, dar um passo ou batalhar, por equanto
 // explorar Casa
 
 
+
 void explorarCasa(){
 
     system("cls");
@@ -130,7 +131,7 @@ void explorarCasa(){
     default:
         
         //para não parar a execução do jogo do nada
-        explorarCasa();
+        return explorarCasa();
 
         break; //tinha apagado os breaks sem querer ao passar as funções
 
