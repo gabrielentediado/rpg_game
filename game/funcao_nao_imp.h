@@ -3,7 +3,6 @@
 
 //espaço para declarar as funções
 
-//testetestetestetestetestetestetestetesteteste
 
 int dado(void);
 
@@ -38,10 +37,10 @@ char titulo_4[] =
 
 
 char combate[] = 
-"\t| - - - - - - - - - - - - - - - - - - - - - - - - |\n"
-"\t|                                                 |\n"
-"\t|  ATACAR - 1      FUGIR - 2      3 - DEFENDER    |\n"
-"\t|___________________        ______________________|\n";
+"\t\t| - - - - - - - - - - - - - - - - - - - - - - - - |\n"
+"\t\t|                                                 |\n"
+"\t\t|  ATACAR - 1      FUGIR - 2      3 - DEFENDER    |\n"
+"\t\t|___________________        ______________________|\n";
 
 char mapa[] =
 "\t\t\t ________________________________________________________\n"
