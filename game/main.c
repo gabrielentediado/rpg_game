@@ -1,25 +1,19 @@
 //bibliotecas padrões
-
 #include <stdio.h>
 #include <time.h>
 #include <unistd.h> 
-
 #include <locale.h>
-
 #include <stdlib.h>
 #include <string.h>
 
 
 //arquivos do jogo
 #include "funcao_nao_imp.h"
-
 #include "personagem_atributos.h"
-
 #include "sprites.h"
-
 #include "funcoes.c"
 
- 
+
 //andar
 
 //quando, o inimigo morrer ou o personagem fugir incrementa em 1 o x e esse valor passa o i e o prt recebe o local da varievel.
@@ -59,17 +53,17 @@ void andar(int i) //andar com o dado, dar um passo ou batalhar, por equanto
 
     if(verificador == 0){
         getchar(); //buffer
-        system("cls"); //limpa a tela
+        system(CLEAR); //limpa a tela
         printf("Bom, é melhor explorar a casa para procurar algo para me defender \n\n");
         sleep(10); //tava pasando direto para as opções
         opcoes();
 
     } 
     else{
-        printf("continuar daqui.");
+        printf("continuar daqui. \n");
         //se quiserem colocar a opção de poder voltar pro menu vai ter que mexer no código, se ele conseguir voltar quebra, pois tá passando 0 ao chamar o andar(0); no menu
         printf("Jogue o dado para dar um passo adiante \n");
-        printf("aparte 1 para jogar o dado ou 2 para ir sem a sorte \n");
+        printf("*aperte 1 para jogar o dado* \n\n *2 para ir sem a sorte* \n");
         scanf("%d", &menuNav);
 
         switch (menuNav)
@@ -103,11 +97,11 @@ void andar(int i) //andar com o dado, dar um passo ou batalhar, por equanto
 
 void explorarCasa(){
 
-    system("cls");
+    system(CLEAR);
     puts("\n\n*Você decide explorar a casa...*");
     sleep(1);
     puts("Qual lugar da casa deseja explorar? \n");
-    printf("1 - Quarto\n2 - Sala principal \n3- voltar para o menu\n");
+    printf("\n1 - Quarto\n2 - Sala principal \n3 - Voltar para o menu\n");
     scanf("%d", &menuNav);
 
     switch (menuNav){
@@ -118,7 +112,7 @@ void explorarCasa(){
         break;
 
     case 2:
-    //sala
+        //sala
         sala(); //entrar na sala primeiro e depois no quarto
         break; //tinha apagado os breaks sem querer ao passar as funções
 
@@ -150,7 +144,7 @@ void explorarCasa(){
 //main -> cadastro -> mundo
 void mundo(){
 
-    system("cls"); //limpa a tela
+    system(CLEAR); //limpa a tela
     
     //introdução:
 
@@ -172,12 +166,10 @@ void mundo(){
 //main -> cadastro -> mundo -> opções -> (andar ou explorar casa)
 
 int  opcoes(){
-    system("cls");
 
-    puts("Menu: ");
-
+    system(CLEAR);
+    puts("\n\nMenu: ");
     puts("O que deseja fazer??");
-
     puts("1 - Andar \n2 - Explorar a casa\n");
     scanf("%d", &menuNav);
     switch (menuNav)
@@ -230,7 +222,6 @@ int main(){
 	printf("\t\t\t|_________________________________________________|\n");
 
     scanf("%d", &lingua);
-
     srand(time(NULL));
     switch (lingua)
     {
@@ -238,7 +229,7 @@ int main(){
         cadastro(); //no arquivo funções
         break;
     case 2:
-        //para testes DESENVOLVIMENTO:
+        //para testes DESENVOLVIMENTO: -- lembrar de remover ao dar o pull pro main
         
         strcpy(personagem_principal.nome, "dev");
         strcpy(personagem_principal.classe, "Humano");

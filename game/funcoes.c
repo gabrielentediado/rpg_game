@@ -1,4 +1,5 @@
 //espaço para usar as fuções antes de serem implementadas no arquivo main.c
+//para acessar os arquivos dessa path basta incluir #include "funcoes.c"
 
 #include <stdio.h>
 #include <time.h>
@@ -9,6 +10,7 @@
 
 #include "funcao_nao_imp.h"
 #include "personagem_atributos.h"
+#include "sprites.h"
 
 //dado de 6 lados
 int dado(){
@@ -38,10 +40,7 @@ int dado_2(){
 //main -> cadastro
 void cadastro(){
     
-    system("cls");
-
-    int escolha;
-
+    system(CLEAR);
     Personagem_atributos personagem_principal;
     puts("*Depois de uma longa noite, o escolhido finalmente acorda...\n");
     sleep(2);
@@ -50,10 +49,9 @@ void cadastro(){
     scanf("%19[^\n]s", &personagem_principal.nome);
     printf("que bom que acordou, bem-vindo de volta %s \n", personagem_principal.nome);
     sleep(5);
-
     do
     {
-        system("cls");
+        system(CLEAR);
         printf("%s", titulo_1);
 	    printf("\t\t\t|           Visualize as classes:                 |\n");
 	    printf("\t\t\t|    1 - Para Mago                                |\n");
@@ -66,7 +64,6 @@ void cadastro(){
         switch (menuNav)
         {
         case 1:
-            
             printf("%s", titulo_1);
             printf("\t\t\t|                  MAGO                           |\n");
             printf("\t\t\t|    VIDA: 15HP                                   |\n");
@@ -75,9 +72,9 @@ void cadastro(){
 
             printf("1 - Escolher \n2 - Sair\n");
 
-            scanf("%d", &escolha);
+            scanf("%d", &menuNav);
 
-            if (escolha == 1)
+            if (menuNav == 1)
             {
                 strcpy(personagem_principal.classe, "mago");
                 personagem_principal.vida = 15;
@@ -90,7 +87,6 @@ void cadastro(){
             break;
 
         case 2:
-
             printf("%s", titulo_1);
             printf("\t\t\t|                  HUMANO                         |\n");
             printf("\t\t\t|    VIDA: 9HP                                    |\n");
@@ -98,9 +94,9 @@ void cadastro(){
             printf("\t\t\t| - - - - - - - - - - - - - - - - - - - - - - - - |\n");
              
             printf("1 - Escolher \n2 - Sair\n");
-            scanf("%d", &escolha);
+            scanf("%d", &menuNav);
 
-            if (escolha == 1)
+            if (menuNav == 1)
             {
                 strcpy(personagem_principal.classe, "Humano");
                 personagem_principal.vida=9;
@@ -112,8 +108,6 @@ void cadastro(){
             break;
         
         case 3:
-
-
             printf("%s", titulo_1);
             printf("\t\t\t|                  ELFO                           |\n");
             printf("\t\t\t|    VIDA: 10HP                                   |\n");
@@ -122,9 +116,9 @@ void cadastro(){
              
             printf("1 - Escolher \n2 - Sair\n");
 
-            scanf("%d", &escolha);
+            scanf("%d", &menuNav);
 
-            if (escolha == 1)
+            if (menuNav == 1)
             {
                 strcpy(personagem_principal.classe, "Elfo");
                 personagem_principal.vida = 10;
@@ -133,7 +127,7 @@ void cadastro(){
             }
             break;
         }
-    }while(escolha != 1);
+    }while(menuNav != 1);
     
 }
 
@@ -149,7 +143,7 @@ void quarto(){
             puts("Você decide entrar no quarto, entretanto a porta esta trancada e não há formas de entrar\n\n");
             puts("talvez tenha algo para abrir a porta em algum lugar...");
             sleep(10); //colocando os sleep para não executar muito rapido e dar tempo de ler
-            explorarCasa();
+            return explorarCasa();
 
         } else {
 
@@ -161,7 +155,7 @@ void quarto(){
             sleep(1);
             puts("Na parde ao lado uma escrita em sangue feito a mão 'eles são reais' \n\n");
             sleep(1);
-            puts("Logo abaixo um báu de madeira, você deseja abrir? \n");
+            puts("Logo abaixo um baú de madeira, você deseja abrir? \n");
             
             puts("1-para abrir\n2-para voltar");
 
@@ -180,7 +174,7 @@ void quarto(){
                     verificador_bau_tentativa = 1;
 
                     sleep(1);
-                    printf("valor da jogadada do dado : %d \n", dadoGerado); // mostra o valor do dado
+                    printf("valor da jogada do dado : %d \n", dadoGerado); // mostra o valor do dado
                     
                     sleep(1);
                     printf("Você empurra o baú, uma parte se solta e você pode conferir o que há dentro\n\n");
@@ -197,11 +191,10 @@ void quarto(){
                     verificador_bau_tentativa = 1; 
 
                     sleep(1);
-                    printf("valor da jogadada do dado : %d \n", dadoGerado); // mostra o valor do dado
-
+                    printf("valor da jogada do dado : %d \n", dadoGerado); // mostra o valor do dado
                     printf("O baú está muito bem lacrado, infelizmente você não consegue abrir\n");
                     sleep(2);
-                    printf("Acho que não há mais o que explorar, vamos sair da casa!");
+                    printf("Acho que não há mais o que explorar, vamos sair da casa!\n");
                     sleep(10);
                     opcoes();
                 }
@@ -246,7 +239,7 @@ void sala(){
 
                 sleep(1);
                 printf("Vamos voltar e explorar o quarto...\n");
-                sleep(1);
+                sleep(8);
                 explorarCasa();
 
             }else{
@@ -269,7 +262,7 @@ int batalha(int x) //para saber qual inimigo usei o "x", é só passar o valor a
     printf("tenta dar uma passo, mas do escuro aparece algo, um %s vindo em sua direção \n", inimigo_1[x].classe);
     sleep(5);
 
-    system("cls");
+    system(CLEAR);
     int defesa = 0;
     printf("\t\t\tNome do inimigo: %s \n",inimigo_1[x].nome);
     printf("\t\t\tNome classe: %s \n",inimigo_1[x].classe);
@@ -345,7 +338,7 @@ int batalha(int x) //para saber qual inimigo usei o "x", é só passar o valor a
     }
 
     //para saber se o inimigo morreu ou personagem morreu, dois casos possiveis: 
-
+    //SISTEMA DE MORTES:
     if (personagem_principal.vida == 0 || personagem_principal.vida<0)
     {
         morte(); //perder
@@ -407,7 +400,7 @@ int batalha(int x) //para saber qual inimigo usei o "x", é só passar o valor a
 
 void morte()
 {
-
+    menuNav = 0;
     printf("%s morreu \n", personagem_principal.nome); 
     printf("Tentar novamente \n aperte: 1 \n para desitir aperte: 2");
     scanf("%d", menuNav);
@@ -432,37 +425,32 @@ void animation(){
     for (int i = 0; i <=4; i++){
             switch (i){
             case 0:
-                system("cls");
-                system("clear"); //limpar no linux
+                system(CLEAR);
                 printf("%s", titulo_1);
                 sleep(1);
                 
                 break;
             case 1:
-                system("cls");
-                system("clear"); //limpar no linux
+                system(CLEAR);
                 printf("%s", titulo_2);
                 sleep(1);
                 
                 break;
             case 2:
-                system("cls");
-                system("clear"); //limpar no linux
+                system(CLEAR);
                 printf("%s", titulo_3);
                 sleep(1);
                 
                 break;
             case 3:
-                system("cls");
-                system("clear"); //limpar no linux
+                system(CLEAR);
                 printf("%s", titulo_4);
                 sleep(1);
                 
                 break;
 
             case 4:
-                system("cls");
-                system("clear"); //limpar no linux
+                system(CLEAR);
                 printf("%s", titulo_1);
                 sleep(1);
                 
@@ -471,9 +459,12 @@ void animation(){
             default:
                 break;
             }
-       
         }
    }
    
 }
 
+void invetario(){
+    
+
+}

@@ -1,6 +1,8 @@
 #ifndef FUNCAO_NAO_IMP_H
 #define FUNCAO_NAO_IMP_H
 
+//para acessar os arquivos dessa path basta incluir #include "FUNCAO_NAO_IMP"
+
 //espaço para declarar as funções
 
 int dado(void);
@@ -16,54 +18,15 @@ int menuNav; // variavel para navegacao entre menus
 int dadoGerado; //variavel global para dados de 6 lados
 int verificador=0; // essa variavel coloquei para ser um true/false, por exemplo na primeira parte, para ele conseguir andar precisa explorar a casa primeiro
 
-//titulo
-char titulo_1[] = 
-"\t\t\t _________________________________________________\n"
-"\t\t\t|                                                 |\n"
-"\t\t\t|                     *RPG*                       |\n"
-"\t\t\t| - - - - - - - - - - - - - - - - - - - - - - - - |\n";
 
+//verica se é windows ou linux e passa para todos os arquivos que tem o #include "funcao_nao_imp.h"
+//basicamente, é só colocar system(CLEAR)
+#ifdef _WIN32
+    #define CLEAR "cls"
+#else
+    #define CLEAR "clear"
+#endif
 
-char titulo_2[] = 
-"\t\t\t _________________________________________________\n"
-"\t\t\t|                                                 |\n"
-"\t\t\t|                      *PG                        |\n"
-"\t\t\t| - - - - - - - - - - - - - - - - - - - - - - - - |\n";
-char titulo_3[] = 
-"\t\t\t _________________________________________________\n"
-"\t\t\t|                                                 |\n"
-"\t\t\t|                     R*G                         |\n"
-"\t\t\t| - - - - - - - - - - - - - - - - - - - - - - - - |\n";
-
-char titulo_4[] = 
-"\t\t\t _________________________________________________\n"
-"\t\t\t|                                                 |\n"
-"\t\t\t|                      RP*                        |\n"
-"\t\t\t| - - - - - - - - - - - - - - - - - - - - - - - - |\n";
-
-
-char combate[] = 
-"\t\t| - - - - - - - - - - - - - - - - - - - - - - - - |\n"
-"\t\t|                                                 |\n"
-"\t\t|  ATACAR - 1      FUGIR - 2      3 - DEFENDER    |\n"
-"\t\t|___________________        ______________________|\n";
-
-char mapa[] =
-"\t\t\t ________________________________________________________\n"
-"\t\t\t|                                                        |\n"
-"\t\t\t|                                                        |\n"
-"\t\t\t|                                                        |\n"
-"\t\t\t|                                                        |\n"
-"\t\t\t|                                                        |\n"
-"\t\t\t|                                                        |\n"
-"\t\t\t|                                                        |\n"
-"\t\t\t|                                                        |\n"
-"\t\t\t|                                                        |\n"
-"\t\t\t|                                                        |\n"
-"\t\t\t|                                                        |\n"
-"\t\t\t|                                                        |\n"
-"\t\t\t|                                                        |\n"
-"\t\t\t|                                                        |\n"
-"\t\t\t ________________________________________________________\n";
+//passei aqueles caracters para o sprites.h
 
 #endif
