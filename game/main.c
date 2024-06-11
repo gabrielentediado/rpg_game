@@ -9,6 +9,7 @@
 #include <stdlib.h>
 #include <string.h>
 
+//teste
 
 //arquivos do jogo
 #include "funcao_nao_imp.h"
