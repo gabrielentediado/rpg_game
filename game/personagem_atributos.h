@@ -14,6 +14,7 @@ typedef struct //estrura para colocar as informaçoes do jogador e também de in
 
 }Personagem_atributos;
 Personagem_atributos personagem_principal; //passei pra uma varievel global
+
 Personagem_atributos inimigo_1[10]; //inimigos, por equanto o máximo de inimigos é 10, mas pode aumentar se quiser
 
 // inventario do jogador, usei numeros para verificar se ele tem ou não, exemplo o primeiro pergaminho é 1, então quando for para usar

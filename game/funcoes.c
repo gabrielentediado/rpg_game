@@ -16,7 +16,6 @@
 int dado(){
 
     srand(time(NULL));
-
     return((rand() % 6) + 1);
 
 }
@@ -25,7 +24,6 @@ int dado(){
 int dado_2(){
 
     srand(time(NULL));
-
     return((rand() % 3) + 1);
 
 }
@@ -49,6 +47,7 @@ void cadastro(){
     scanf("%19[^\n]s", &personagem_principal.nome);
     printf("que bom que acordou, bem-vindo de volta %s \n", personagem_principal.nome);
     sleep(5);
+    int escolher;
     do
     {
         system(CLEAR);
@@ -72,18 +71,15 @@ void cadastro(){
 
             printf("1 - Escolher \n2 - Sair\n");
 
-            scanf("%d", &menuNav);
+            scanf("%d", &escolher);
 
-            if (menuNav == 1)
+            if (escolher == 1)
             {
                 strcpy(personagem_principal.classe, "mago");
                 personagem_principal.vida = 15;
                 personagem_principal.ataque = 3;
                 mundo();
-                
             }
-            
-
             break;
 
         case 2:
@@ -94,17 +90,15 @@ void cadastro(){
             printf("\t\t\t| - - - - - - - - - - - - - - - - - - - - - - - - |\n");
              
             printf("1 - Escolher \n2 - Sair\n");
-            scanf("%d", &menuNav);
+            scanf("%d", &escolher);
 
-            if (menuNav == 1)
+            if (escolher == 1)
             {
                 strcpy(personagem_principal.classe, "Humano");
                 personagem_principal.vida=9;
                 personagem_principal.ataque=6;
                 mundo();
             }
-            
-            
             break;
         
         case 3:
@@ -113,12 +107,9 @@ void cadastro(){
             printf("\t\t\t|    VIDA: 10HP                                   |\n");
             printf("\t\t\t|    DANO: 4HP                                    |\n");
             printf("\t\t\t| - - - - - - - - - - - - - - - - - - - - - - - - |\n");
-             
             printf("1 - Escolher \n2 - Sair\n");
-
-            scanf("%d", &menuNav);
-
-            if (menuNav == 1)
+            scanf("%d", &escolher);
+            if (escolher == 1)
             {
                 strcpy(personagem_principal.classe, "Elfo");
                 personagem_principal.vida = 10;
@@ -127,7 +118,8 @@ void cadastro(){
             }
             break;
         }
-    }while(menuNav != 1);
+
+    }while(escolher != 1);
     
 }
 
@@ -136,14 +128,12 @@ int verificador_bau_tentativa = 0;// para impedir dele tentar abrir o bau varias
 // quarto
 void quarto(){
 
-         
-
         if(verificador == 0){ // para entrar no quarto ele precisa entrar na sala primeiro
 
             puts("Você decide entrar no quarto, entretanto a porta esta trancada e não há formas de entrar\n\n");
             puts("talvez tenha algo para abrir a porta em algum lugar...");
             sleep(10); //colocando os sleep para não executar muito rapido e dar tempo de ler
-            return explorarCasa();
+            explorarCasa();
 
         } else {
 
@@ -339,10 +329,10 @@ int batalha(int x) //para saber qual inimigo usei o "x", é só passar o valor a
 
     //para saber se o inimigo morreu ou personagem morreu, dois casos possiveis: 
     //SISTEMA DE MORTES:
-    if (personagem_principal.vida == 0 || personagem_principal.vida<0)
+    if (personagem_principal.vida<=0)
     {
         morte(); //perder
-    }else if(inimigo_1[x].vida == 0 || inimigo_1[x].vida<0){
+    }else if(inimigo_1[x].vida <=0){
         printf("você conseguiu \n");
         sleep(5);
         //ganhar passa para o proximo inimigo

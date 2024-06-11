@@ -63,26 +63,25 @@ void andar(int i) //andar com o dado, dar um passo ou batalhar, por equanto
         printf("continuar daqui. \n");
         //se quiserem colocar a opção de poder voltar pro menu vai ter que mexer no código, se ele conseguir voltar quebra, pois tá passando 0 ao chamar o andar(0); no menu
         printf("Jogue o dado para dar um passo adiante \n");
-        printf("*aperte 1 para jogar o dado* \n\n *2 para ir sem a sorte* \n");
+        printf("\n*aperte 1 para jogar o dado* \n*2 para ir sem a sorte*\n");
         scanf("%d", &menuNav);
 
         switch (menuNav)
         {
         case 1:
 
-            if (dadoGerado > 2){
-                printf("dado gerado: %d", dadoGerado);
-                printf("Parece que o caminho está limpo \n");
+            if (dadoGerado > 4){
+                printf("dado gerado: %d\n", dadoGerado);
+                printf("Parece que o caminho está limpo \n vamo continuar");
+                *prt++;
+                andar(*prt);
                 sleep(5);
             }else{
-                printf("dado gerado: %d", dadoGerado);
+                printf("dado gerado: %d\n", dadoGerado);
                 sleep(10);
-                
                 batalha(i); //o valor de i passa para a função batalha(int x) e permite identificar o inimigo
             }
-            
             break;  
-        
         case 2:
             batalha(i); //o valor de i passa para a função batalha(int x) e permite identificar o inimigo
             break;
@@ -93,8 +92,6 @@ void andar(int i) //andar com o dado, dar um passo ou batalhar, por equanto
 
 
 // explorar Casa
-
-
 void explorarCasa(){
 
     system(CLEAR);
@@ -144,9 +141,8 @@ void explorarCasa(){
 //main -> cadastro -> mundo
 void mundo(){
 
+
     system(CLEAR); //limpa a tela
-    
-    //introdução:
 
     printf("*Você está em sua casa e enfim levanta...\n\n");
     sleep(1);
@@ -194,7 +190,6 @@ int  opcoes(){
         break;
     }
 }
-
 
 //                  _       
 //                 (_)      
