@@ -1,3 +1,4 @@
+
 //bibliotecas padrões
 #include <stdio.h>
 #include <time.h>
@@ -14,7 +15,7 @@
 #include "funcoes.c"
 
 
-//andar
+//andar 
 
 //quando, o inimigo morrer ou o personagem fugir incrementa em 1 o x e esse valor passa o i e o prt recebe o local da varievel.
 void andar(int i) //andar com o dado, dar um passo ou batalhar, por equanto
@@ -24,7 +25,6 @@ void andar(int i) //andar com o dado, dar um passo ou batalhar, por equanto
 
     int *prt = &i; 
     //tranformei os inimigos em vetores, para possibilitar colocar vários inimigos, pensei em fazer com os ponteiros também
-
     inimigo_1[*prt].ataque;
     inimigo_1[*prt].vida;
     inimigo_1[*prt].nome;
@@ -50,7 +50,7 @@ void andar(int i) //andar com o dado, dar um passo ou batalhar, por equanto
     strcpy(inimigo_1[2].nome, "Zephyrion");
     strcpy(inimigo_1[2].classe, "monstro");
 
-
+    
     if(verificador == 0){
         getchar(); //buffer
         system(CLEAR); //limpa a tela
@@ -70,20 +70,34 @@ void andar(int i) //andar com o dado, dar um passo ou batalhar, por equanto
         {
         case 1:
 
-            if (dadoGerado > 4){
+            if (dadoGerado > 4 && i <= 2){
                 printf("dado gerado: %d\n", dadoGerado);
                 printf("Parece que o caminho está limpo \n vamo continuar");
                 *prt++;
                 andar(*prt);
                 sleep(5);
-            }else{
+            }else if(dadoGerado < 4 && i <= 2){
                 printf("dado gerado: %d\n", dadoGerado);
                 sleep(10);
                 batalha(i); //o valor de i passa para a função batalha(int x) e permite identificar o inimigo
+            }else{
+                printf("o jogo acabou por equando, aguarde novos updates  \n");
             }
+
             break;  
         case 2:
-            batalha(i); //o valor de i passa para a função batalha(int x) e permite identificar o inimigo
+            printf("Por sua coragem ganhara 1 ponto de ataque e um 1 de vida \n");
+            personagem_principal.ataque++;
+            personagem_principal.vida++;
+            sleep(5);
+            if (i <= 2)
+            {
+                batalha(i); //o valor de i passa para a função batalha(int x) e permite identificar o inimigo
+
+            }else{
+                printf("o jogo acabou por equando, aguarde novos updates  \n");
+            }
+            
             break;
 
         }
@@ -140,9 +154,15 @@ void explorarCasa(){
 
 //main -> cadastro -> mundo
 void mundo(){
+    
 
-
+    sleep(8);
     system(CLEAR); //limpa a tela
+
+    //testagem:
+    printf("%s\n", personagem_principal.nome);
+    printf("%d\n", personagem_principal.vida); 
+    printf("%s", personagem_principal.classe);
 
     printf("*Você está em sua casa e enfim levanta...\n\n");
     sleep(1);
@@ -202,9 +222,7 @@ int main(){
 
     setlocale (LC_ALL, "Portuguese");
     int lingua;
-    personagem_principal.vida = 0;
-
-    animation();
+    //animation();
     //printf("%s", titulo_1);
 
     sleep(2);
@@ -239,5 +257,5 @@ int main(){
     default:
         main();
     }
-  
+    
 }

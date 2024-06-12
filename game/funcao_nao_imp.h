@@ -10,7 +10,7 @@ int dado2(void);
 void cadastro();
 void quarto();
 void sala();
-int batalha(int x);
+void batalha(int x);
 void morte();
 void animation();
 
