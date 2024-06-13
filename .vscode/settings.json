@@ -57,6 +57,8 @@
   "C_Cpp_Runner.useLinkTimeOptimization": false,
   "C_Cpp_Runner.msvcSecureNoWarnings": false,
   "files.associations": {
-    "funcao_nao_imp.h": "c"
+    "funcao_nao_imp.h": "c",
+    "string.h": "c",
+    "locale.h": "c"
   }
 }
