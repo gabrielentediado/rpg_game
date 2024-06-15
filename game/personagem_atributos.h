@@ -23,10 +23,17 @@ Personagem_atributos inimigo_1[10]; //inimigos, por equanto o máximo de inimigo
 
 typedef struct 
 {
-    int pergaminho;
+    int pergaminho_verificador;
+    char pergaminho_nome[15];
+    int espadas_verificador;
+    char espadas_nome[15];
+    int espadas_verificador;
+    char espadas_nome[15];
 
 }Personagem_inventario;
 
-Personagem_inventario inv;
+#define limite_invetario
+
+Personagem_inventario inv[];
 
 #endif // MINHA_STRUCT_H

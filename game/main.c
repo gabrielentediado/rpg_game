@@ -1,5 +1,3 @@
-
-
 //bibliotecas padrões
 #include <stdio.h>
 #include <time.h>
@@ -7,8 +5,6 @@
 #include <locale.h>
 #include <stdlib.h>
 #include <string.h>
-
-//teste
 
 //arquivos do jogo
 #include "funcao_nao_imp.h"
@@ -33,34 +29,14 @@ void andar(int i) //andar com o dado, dar um passo ou batalhar, por equanto
 
     dadoGerado = dado(); 
 
-    int *prt = &i; 
     //tranformei os inimigos em vetores, para possibilitar colocar vários inimigos, pensei em fazer com os ponteiros também
-    inimigo_1[*prt].ataque;
-    inimigo_1[*prt].vida;
-    inimigo_1[*prt].nome;
-    inimigo_1[*prt].classe;
-    
+    inimigo_1[i].ataque;
+    inimigo_1[i].vida;
+    inimigo_1[i].nome;
+    inimigo_1[i].classe;
 
-    //teste: 
+    int quantidade_inimigos = 2; 
 
-    //coloquei mais 2 para testar,
-    //se quisermos futaramente colocar, tipo: ele anda x vezes e ganha ou anda x vezes e descobre um local novo
-    inimigo_1[0].ataque = 1;
-    inimigo_1[0].vida = 10;
-    strcpy(inimigo_1[0].nome, "Dath");
-    strcpy(inimigo_1[0].classe, "monstro");
-
-    inimigo_1[1].ataque = 2;
-    inimigo_1[1].vida = 10;
-    strcpy(inimigo_1[1].nome, "Fangoroth");
-    strcpy(inimigo_1[1].classe, "monstro");
-
-    inimigo_1[2].ataque = 2;
-    inimigo_1[2].vida = 15;
-    strcpy(inimigo_1[2].nome, "Zephyrion");
-    strcpy(inimigo_1[2].classe, "monstro");
-
-    
     if(verificador == 0){
         getchar(); //buffer
         system(CLEAR); //limpa a tela
@@ -80,13 +56,13 @@ void andar(int i) //andar com o dado, dar um passo ou batalhar, por equanto
         {
         case 1:
 
-            if (dadoGerado > 4 && i <= 2){
+            if (dadoGerado > 4 && i <= quantidade_inimigos){
                 printf("dado gerado: %d\n", dadoGerado);
                 printf("Parece que o caminho está limpo \n vamo continuar");
-                *prt++;
-                andar(*prt);
+                i++;
+                andar(i);
                 sleep(5);
-            }else if(dadoGerado < 4 && i <= 2){
+            }else if(dadoGerado < 4 && i <= quantidade_inimigos){
                 printf("dado gerado: %d\n", dadoGerado);
                 printf("tenta dar uma passo, mas do escuro aparece algo, um %s vindo em sua direção \n", inimigo_1[i].classe);
                 sleep(10);
@@ -101,7 +77,7 @@ void andar(int i) //andar com o dado, dar um passo ou batalhar, por equanto
             personagem_principal.ataque++;
             personagem_principal.vida++;
             sleep(5);
-            if (i <= 2)
+            if (i <= quantidade_inimigos)
             {
                 printf("tenta dar uma passo, mas do escuro aparece algo, um %s vindo em sua direção \n", inimigo_1[i].classe);
                 batalha(i); //o valor de i passa para a função batalha(int x) e permite identificar o inimigo
@@ -109,9 +85,7 @@ void andar(int i) //andar com o dado, dar um passo ou batalhar, por equanto
             }else{
                 printf("o jogo acabou por equando, aguarde novos updates  \n");
             }
-            
             break;
-
         }
     }
 }                 
@@ -155,42 +129,6 @@ void explorarCasa(){
 
 }
 
-
-//                            _       
-//                           | |      
-//  _ __ ___  _   _ _ __   __| | ___  
-// | '_ ` _ \| | | | '_ \ / _` |/ _ \ 
-// | | | | | | |_| | | | | (_| | (_) |
-// |_| |_| |_|\__,_|_| |_|\__,_|\___/ 
-
-
-//main -> cadastro -> mundo
-void mundo(){
-    
-
-    sleep(8);
-    system(CLEAR); //limpa a tela
-
-    //testagem:
-    printf("%s\n", personagem_principal.nome);
-    printf("%d\n", personagem_principal.vida); 
-    printf("%s", personagem_principal.classe);
-
-    printf("*Você está em sua casa e enfim levanta...\n\n");
-    sleep(1);
-    printf("Você não se recorda de nada...\n");
-    sleep(1);
-    printf("Segue ao espelho, nada de especial\n");
-    sleep(1);
-    printf("Seu braço reflete, é possível ver uma mensagem...\n\n'Mate-os, liberte a alma' \n\n");
-    sleep(1);
-    puts("Você olha ao redor e não vê nada além de uma casa de madeira caindo aos pedaços\n");
-    sleep(10);
-
-    opcoes(); //chama as opções
-    
-}
-
 //main -> cadastro -> mundo -> opções -> (andar ou explorar casa)
 
 int  opcoes(){
@@ -206,7 +144,7 @@ int  opcoes(){
         andar(0); //depois de ter explorado a casa ele pode andar
         break;
     case 2:
-        if (inv.pergaminho == 1) // para evitar de ficar explorando a casa
+        if (inv[0].pergaminho_verificador == 1) // para evitar de ficar explorando a casa
         {
             printf("a casa já foi explorada, vamos sair \n");
             sleep(10);
@@ -223,13 +161,7 @@ int  opcoes(){
     }
 }
 
-//                  _       
-//                 (_)      
-//  _ __ ___   __ _ _ _ __  
-// | '_ ` _ \ / _` | | '_ \ 
-// | | | | | | (_| | | | | |
-// |_| |_| |_|\__,_|_|_| |_|
-          
+//main
 int main(){
 
     setlocale (LC_ALL, "Portuguese");

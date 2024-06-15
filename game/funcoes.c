@@ -121,6 +121,49 @@ void cadastro(){
     
 }
 
+
+//main -> cadastro -> mundo
+void mundo(){
+    
+    //passando dados para struct personagem.atributos
+    inimigo_1[0].ataque = 1;
+    inimigo_1[0].vida = 10;
+    strcpy(inimigo_1[0].nome, "Dath");
+    strcpy(inimigo_1[0].classe, "monstro");
+
+    inimigo_1[1].ataque = 2;
+    inimigo_1[1].vida = 10;
+    strcpy(inimigo_1[1].nome, "Fangoroth");
+    strcpy(inimigo_1[1].classe, "monstro");
+
+    inimigo_1[2].ataque = 2;
+    inimigo_1[2].vida = 15;
+    strcpy(inimigo_1[2].nome, "Zephyrion");
+    strcpy(inimigo_1[2].classe, "monstro");
+
+    sleep(8);
+    system(CLEAR); //limpa a tela
+
+    //testagem:
+    printf("%s\n", personagem_principal.nome);
+    printf("%d\n", personagem_principal.vida); 
+    printf("%s", personagem_principal.classe);
+
+    printf("*Você está em sua casa e enfim levanta...\n\n");
+    sleep(1);
+    printf("Você não se recorda de nada...\n");
+    sleep(1);
+    printf("Segue ao espelho, nada de especial\n");
+    sleep(1);
+    printf("Seu braço reflete, é possível ver uma mensagem...\n\n'Mate-os, liberte a alma' \n\n");
+    sleep(1);
+    puts("Você olha ao redor e não vê nada além de uma casa de madeira caindo aos pedaços\n");
+    sleep(10);
+
+    opcoes(); //chama as opções
+    
+}
+
 int verificador_bau_tentativa = 0;// para impedir dele tentar abrir o bau varias vezes (apenas uma tentativa)
 
 // quarto
@@ -168,7 +211,7 @@ void quarto(){
                     printf("Você empurra o baú, uma parte se solta e você pode conferir o que há dentro\n\n");
                     printf("Legal, você encontrou um pergaminho, item adicionado ao seu inventário\n");
 
-                    inv.pergaminho = 1;
+                    inv[0].pergaminho_verificador = 1;
                     
                     sleep(1);
                     printf("Acho que não há mais o que explorar, vamos sair da casa!");
