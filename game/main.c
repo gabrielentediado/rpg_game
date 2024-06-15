@@ -234,7 +234,7 @@ int main(){
 
     setlocale (LC_ALL, "Portuguese");
     int lingua;
-    //animation();
+    animation();
     //printf("%s", titulo_1);
 
     sleep(2);
@@ -253,19 +253,7 @@ int main(){
     case 1:
         cadastro(); //no arquivo funções
         break;
-    case 2:
-        //para testes DESENVOLVIMENTO: -- lembrar de remover ao dar o pull pro main
-        
-        strcpy(personagem_principal.nome, "dev");
-        strcpy(personagem_principal.classe, "Humano");
-        personagem_principal.vida=10;
-        personagem_principal.ataque=5;
-
-        verificador = 1; 
-        andar(0); //coloquei zero pra iniciar no primeiro inimigo - só lembra de passar todos os parametros que a função utiliza
-        
-        break;
-
+	    
     default:
         main();
     }
