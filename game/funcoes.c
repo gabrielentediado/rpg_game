@@ -246,11 +246,24 @@ int dadoGerado_2;
 
 void batalha(int x) //para saber qual inimigo usei o "x", é só passar o valor ao chamar a função
 {   
-    //ponteiro que aponta para os valores da struct personagem_principal
-    Personagem_atributos *personagem_ponteiro = &personagem_principal;
 
-    printf("tenta dar uma passo, mas do escuro aparece algo, um %s vindo em sua direção \n", inimigo_1[x].classe);
-    sleep(5);
+    //ponteiro que aponta para os valores da struct personagem_principal
+    Personagem_atributos *personagem_ponteiro = &personagem_principal; 
+    sleep(3);
+
+    //para saber se o inimigo morreu ou personagem morreu, dois casos possiveis: 
+    //SISTEMA DE MORTES:
+    if (personagem_ponteiro->vida<=0)
+    {
+        morte(); //perder
+    }else if(inimigo_1[x].vida <=0){
+        printf("você conseguiu \n");
+        sleep(3);
+        //ganhar passa para o proximo inimigo
+        x++; //para colocar mais inimigos vai ter só que fazer isso
+        andar(x);
+    }
+    //agora a vez do inimigo:
 
     system(CLEAR);
     int defesa = 0;
@@ -261,7 +274,7 @@ void batalha(int x) //para saber qual inimigo usei o "x", é só passar o valor 
     printf("%s", combate);
 
     printf("\t\t_____________| %s |___________________ \n", personagem_ponteiro->nome);
-    printf("\t\t___________Sua vida:\n %d ______________\n", personagem_ponteiro->vida);
+    printf("\t\t___________Sua vida:%d ______________\n", personagem_ponteiro->vida);
     scanf("%d", &menuNav);
     switch (menuNav)
     {
@@ -327,19 +340,6 @@ void batalha(int x) //para saber qual inimigo usei o "x", é só passar o valor 
         break;
     }
 
-    //para saber se o inimigo morreu ou personagem morreu, dois casos possiveis: 
-    //SISTEMA DE MORTES:
-    if (personagem_ponteiro->vida<=0)
-    {
-        morte(); //perder
-    }else if(inimigo_1[x].vida <=0){
-        printf("você conseguiu \n");
-        sleep(5);
-        //ganhar passa para o proximo inimigo
-        x++; //para colocar mais inimigos vai ter só que fazer isso
-        andar(x);
-    }
-    //agora a vez do inimigo:
     
     printf("Turno do advesário! \n");
     dadoGerado_2 = dado_2();
@@ -380,9 +380,6 @@ void batalha(int x) //para saber qual inimigo usei o "x", é só passar o valor 
         sleep(5);
         
     }
-    
-    sleep(5);
-
     
     batalha(x);
 

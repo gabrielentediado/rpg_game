@@ -1,4 +1,5 @@
 
+
 //bibliotecas padrões
 #include <stdio.h>
 #include <time.h>
@@ -7,12 +8,21 @@
 #include <stdlib.h>
 #include <string.h>
 
+//teste
 
 //arquivos do jogo
 #include "funcao_nao_imp.h"
 #include "personagem_atributos.h"
 #include "sprites.h"
 #include "funcoes.c"
+
+//verica se é windows ou linux e passa para todos os arquivos que tem o #include "funcao_nao_imp.h"
+//basicamente, é só colocar system(CLEAR)
+#ifdef _WIN32
+    #define CLEAR "cls"
+#else
+    #define CLEAR "clear"
+#endif
 
 
 //andar 
@@ -78,6 +88,7 @@ void andar(int i) //andar com o dado, dar um passo ou batalhar, por equanto
                 sleep(5);
             }else if(dadoGerado < 4 && i <= 2){
                 printf("dado gerado: %d\n", dadoGerado);
+                printf("tenta dar uma passo, mas do escuro aparece algo, um %s vindo em sua direção \n", inimigo_1[i].classe);
                 sleep(10);
                 batalha(i); //o valor de i passa para a função batalha(int x) e permite identificar o inimigo
             }else{
@@ -92,6 +103,7 @@ void andar(int i) //andar com o dado, dar um passo ou batalhar, por equanto
             sleep(5);
             if (i <= 2)
             {
+                printf("tenta dar uma passo, mas do escuro aparece algo, um %s vindo em sua direção \n", inimigo_1[i].classe);
                 batalha(i); //o valor de i passa para a função batalha(int x) e permite identificar o inimigo
 
             }else{
