@@ -125,7 +125,7 @@ void andar(int i) //andar com o dado, dar um passo ou batalhar, por equanto
 
 void invetario(){
 
-    printf("Inventário: \n 1- para ver as suas espadas \n2-para ver seus os escudos \n3-pergaminhos:\n");
+    printf("Inventário: \n1- para ver as suas espadas\n2-para ver seus os escudos\n3-pergaminhos:\n4-voltar para o menu");
     scanf("%d", &menuNav);
 
     //inventario *invetario_ponteiro[] = &inv[MAX];
@@ -148,17 +148,19 @@ void invetario(){
        //mostrar as espadas:
         for (int i = 0; i < MAX; i++)
         {
-            while (inv[i].espadas_verificador != 0)
+            if(inv[i].espadas_verificador == 1)
             {
-                printf("1 - %s \n", i+1, personagem_principal_itens[i].Personagem_inventario.espadas_nome);
+                printf("%d - %s \n", i+1, personagem_principal_itens[i].Personagem_inventario.espadas_nome);
 
             }
             
         }
         //trocar de espada, para quando a gente colocar stats nas espadas
-        printf("Deseja trocar de arma");
-
+        printf("Deseja trocar de arma\n1-para sim\n2-para voltar");
+        scanf("%d", &menuNav);
+        
        sleep(3);
+
         
         break;
         

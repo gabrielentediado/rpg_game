@@ -12,7 +12,6 @@
 #include "sprites.h"
 #include "funcoes.c"
 
-//verica se é windows ou linux e passa para todos os arquivos que tem o #include "funcao_nao_imp.h"
 //basicamente, é só colocar system(CLEAR)
 #ifdef _WIN32
     #define CLEAR "cls"
@@ -92,7 +91,7 @@ int main(){
         personagem_principal.ataque=5;
 
         verificador = 1; 
-        invetario(); //coloquei zero pra iniciar no primeiro inimigo - só lembra de passar todos os parametros que a função utiliza
+        invetario();
         
         break;
 
