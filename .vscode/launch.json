@@ -7,9 +7,9 @@
       "request": "launch",
       "args": [],
       "stopAtEntry": false,
-      "externalConsole": true,
-      "cwd": "c:/Users/Gabriel/Downloads/rpg_game-1/game",
-      "program": "c:/Users/Gabriel/Downloads/rpg_game-1/game/build/Debug/outDebug",
+      "externalConsole": false,
+      "cwd": "/workspaces/rpg_game",
+      "program": "/workspaces/rpg_game/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [

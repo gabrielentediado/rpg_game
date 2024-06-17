@@ -13,6 +13,7 @@ void sala();
 void batalha(int x);
 void morte();
 void animation();
+void mundo();
 
 int menuNav; // variavel para navegacao entre menus
 int dadoGerado; //variavel global para dados de 6 lados

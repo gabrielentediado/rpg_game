@@ -1,8 +1,8 @@
 //                 _ _       
-//                (_) |      
+//                (_ |      
 //  ___ _ __  _ __ _| |_ ___ 
 // / __| '_ \| '__| | __/ _ \
-// \__ \ |_) | |  | | ||  __/
+// \__ \ |_ | |  | | ||  __/
 // |___/ .__/|_|  |_|\__\___|
 //     | |                   
 //     |_|                   
@@ -61,6 +61,32 @@ char mapa[] =
 "\t\t\t|                                                        |\n"
 "\t\t\t ________________________________________________________\n";
 
+char caveira[] =    
+"                             ,--. \n"
+"                           {    } \n"
+"                           K,   } \n"
+"                           /  ~Y` \n"
+"                     ,   /   /    \n"
+"                    {_'-K.__/     \n"
+"                      `/-.__L._   \n"
+"                      /  ' /`\\_} \n"
+"                     /  ' /       \n"
+"             ____   /  ' /        \n"
+"      ,-'~~~~    ~~/  ' /_        \n"
+"    ,'             ``~~~  ',      \n"
+"   (                        Y     \n"
+"  {                         I     \n"
+" {     -                    `,   \n"
+" |      ',                   )   \n"
+" |       |   ,..__      __. Y    \n"
+" |     .,_./  Y ' / ^Y   J  )|   \n"
+" \\          |' /   |   |   ||   \n"
+"  \\         L_/    . _ (_,.'(   \n"
+"   \\, ,  ^^\"\"\"' / |      )  \n"
+"     \\_  \\       /,L]     /   \n"
+"       '-_~-,       ` `   ./`     \n"
+"          `'{_             )      \n"
+"              ^^\..___,.--`       \n";
 
 // Estrutura para um sprite de personagem
 
@@ -69,7 +95,7 @@ typedef struct {
     int largura;     // Largura do sprite
     int altura;      // Altura do sprite
     
-    char** dados;    // Dados do sprite (matriz de caracteres)
+    char** dados;    // Dados do sprite (matriz de caracteres
 
 } Sprite;
 
