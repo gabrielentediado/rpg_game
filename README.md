@@ -4,7 +4,7 @@ Etapas de execução:
 
 1 - abra a pasta "game"
 
-2 - arir a pasta "output"
+2 - abrir a pasta "output"
 
 3 - executar o "main.exe"
 
