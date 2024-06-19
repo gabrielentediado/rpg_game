@@ -124,55 +124,104 @@ void andar(int i) //andar com o dado, dar um passo ou batalhar, por equanto
 
 
 void invetario(){
-
-    printf("Inventário: \n1- para ver as suas espadas\n2-para ver seus os escudos\n3-pergaminhos:\n4-voltar para o menu");
+    system(CLEAR);
+    printf("Inventário: \n1- para ver as suas espadas\n2-para ver seus os escudos\n3-voltar para o menu");
     scanf("%d", &menuNav);
 
     //inventario *invetario_ponteiro[] = &inv[MAX];
     //inventario *personagem_invetario[] = &personagem_principal_itens[MAX];
     
-    //testando a usabilidade:
+    printf("você adquiriu uma %s\n", inv[0].espadas_nome);
+    //testando a usabilidade: //para passar os valores da espada ou do escudo é só copiar o código e alterar os valores do array
     strcpy(personagem_principal_itens[0].Personagem_inventario.espadas_nome, inv[0].espadas_nome);
     int espada = personagem_principal.ataque + inv[0].espadas_valores;
     personagem_principal.ataque = espada; 
+    inv[0].espadas_verificador = 1; //para saber qual espada o usuario tem, 0 para false, 1 para true
+    int usando_espada = 0; 
 
-    inv[0].espadas_verificador = 1; //para saber qual espada o usuario tem
-
-    int usando = 1; //para saber qual espada o usuario esta utilizando
-    int remover[5] = {1,3,5,10}; //para saber o valor para decrementar
-
+     printf("você adquiriu um %s\n", inv[0].escudo_nome);
+    strcpy(personagem_principal_itens[0].Personagem_inventario.escudo_nome, inv[0].escudo_nome);
+    int escudo = personagem_principal.vida + inv[0].escudo_valores;
+    personagem_principal.vida = escudo; 
+    inv[0].escudos_verificador = 1; 
+    sleep(5);
 
     switch (menuNav)
     {
     case 1:
-       //mostrar as espadas:
+       //mostrar as espadas: 
+       //fiz dessa forma para caso ele não consiga pegar uma espada em alguma determidada parte do jogo
         for (int i = 0; i < MAX; i++)
         {
             if(inv[i].espadas_verificador == 1)
             {
                 printf("%d - %s \n", i+1, personagem_principal_itens[i].Personagem_inventario.espadas_nome);
-
             }
-            
         }
         //trocar de espada, para quando a gente colocar stats nas espadas
         printf("Deseja trocar de arma\n1-para sim\n2-para voltar");
         scanf("%d", &menuNav);
+
+        //para trocar de arma ele tem que tirar o valor da espada que ele já estiver usando, senão terá ataque infinito
+        switch (menuNav)
+        {
+        case 1:
+            espada = personagem_principal.ataque - inv[usando_espada].espadas_valores;
+            personagem_principal.ataque = espada;
+
+            printf("qual espada deseja escolher? \n"); 
+            scanf("%d", &menuNav);
+            //para impedir de colocar uma espada que não possui
+            if(inv[menuNav].espadas_verificador == 1)
+            {
+                int espada = personagem_principal.ataque + inv[menuNav].espadas_valores;
+                personagem_principal.ataque = espada;
+                printf("você selecionou a espada: %s\nEstá com: %d de ataque", inv[menuNav].espadas_nome, espada);
+                sleep(5);
+                invetario(); 
+            }else{
+                
+                printf("você não possui está espada\n");
+                invetario(); 
+            }
+
+            break;
+
+        case 2:
+            invetario(); 
+            break;
+        
+        default:
+            invetario(); 
+            break;
+        }
         
        sleep(3);
 
-        
         break;
         
     case 2:
-        //escudos
-        for (int i = 0; i < personagem_principal_itens[MAX].Personagem_inventario.quantidade_espadas; i++)
+        //mostrar os escudos:
+        for (int i = 0; i < MAX; i++)
         {
-            printf("%d - %s \n", i+1, personagem_principal_itens[i].Personagem_inventario.escudo_nome);
-        }
-        
+            if(inv[i].escudos_verificador == 1)
+            {
+                printf("%d - %s \n", i+1, personagem_principal_itens[i].Personagem_inventario.escudo_nome);
+            }
+    
+         }
+
+        sleep(5); //depois faço o resto do código
+        invetario();
+
         break;
     
+    case 3:
+
+        opcoes();
+
+        break;
+
     default:
         invetario();
         break;

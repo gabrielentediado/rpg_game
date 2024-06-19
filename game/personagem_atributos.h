@@ -17,11 +17,10 @@ typedef struct
     char pergaminho_nome[15];
 
     int espadas_verificador;
-    int quantidade_espadas;
     int espadas_valores;
     char espadas_nome[15];
 
-    int quantidade_escudos;
+    int escudos_verificador;
     int escudo_valores;
     char escudo_nome[15];
 
