@@ -60,6 +60,8 @@
     "funcao_nao_imp.h": "c",
     "string.h": "c",
     "locale.h": "c",
-    "algorithm": "c"
+    "algorithm": "c",
+    "unistd.h": "c",
+    "stdio.h": "c"
   }
 }

@@ -9,6 +9,7 @@
 #include <string.h>
 
 
+
 #include "funcao_nao_imp.h"
 #include "personagem_atributos.h"
 #include "sprites.h"
@@ -28,6 +29,27 @@ int dado_2(){
     return((rand() % 3) + 1);
 
 }
+
+int verificador_bau_tentativa = 0;// para impedir dele tentar abrir o bau varias vezes (apenas uma tentativa)
+
+void morte()
+{
+    printf("%s morreu \n", personagem_principal.nome); 
+    printf("Aperte 1: para 'Tentar novamentea'\n2: para 'desitir'");
+    scanf("%d", &menuNav);
+    switch (menuNav)
+    {
+    case 1:
+        printf("%s", personagem_principal.nome);   
+        opcoes();
+        break;
+    
+    case 2:
+        printf("A sua historia acaba por aqui \n Obrigado por ter jogado");
+        break;
+    }
+}
+
 
 
 // explorar Casa
@@ -122,210 +144,6 @@ void andar(int i) //andar com o dado, dar um passo ou batalhar, por equanto
     }
 }                 
 
-
-void invetario(){
-    system(CLEAR);
-    printf("Inventário: \n1- para ver as suas espadas\n2-para ver seus os escudos\n3-voltar para o menu");
-    scanf("%d", &menuNav);
-
-    //inventario *invetario_ponteiro[] = &inv[MAX];
-    //inventario *personagem_invetario[] = &personagem_principal_itens[MAX];
-    
-    printf("você adquiriu uma %s\n", inv[0].espadas_nome);
-    //testando a usabilidade: //para passar os valores da espada ou do escudo é só copiar o código e alterar os valores do array
-    strcpy(personagem_principal_itens[0].Personagem_inventario.espadas_nome, inv[0].espadas_nome);
-    int espada = personagem_principal.ataque + inv[0].espadas_valores;
-    personagem_principal.ataque = espada; 
-    inv[0].espadas_verificador = 1; //para saber qual espada o usuario tem, 0 para false, 1 para true
-    int usando_espada = 0; 
-
-     printf("você adquiriu um %s\n", inv[0].escudo_nome);
-    strcpy(personagem_principal_itens[0].Personagem_inventario.escudo_nome, inv[0].escudo_nome);
-    int escudo = personagem_principal.vida + inv[0].escudo_valores;
-    personagem_principal.vida = escudo; 
-    inv[0].escudos_verificador = 1; 
-    sleep(5);
-
-    switch (menuNav)
-    {
-    case 1:
-       //mostrar as espadas: 
-       //fiz dessa forma para caso ele não consiga pegar uma espada em alguma determidada parte do jogo
-        for (int i = 0; i < MAX; i++)
-        {
-            if(inv[i].espadas_verificador == 1)
-            {
-                printf("%d - %s \n", i+1, personagem_principal_itens[i].Personagem_inventario.espadas_nome);
-            }
-        }
-        //trocar de espada, para quando a gente colocar stats nas espadas
-        printf("Deseja trocar de arma\n1-para sim\n2-para voltar");
-        scanf("%d", &menuNav);
-
-        //para trocar de arma ele tem que tirar o valor da espada que ele já estiver usando, senão terá ataque infinito
-        switch (menuNav)
-        {
-        case 1:
-            espada = personagem_principal.ataque - inv[usando_espada].espadas_valores;
-            personagem_principal.ataque = espada;
-
-            printf("qual espada deseja escolher? \n"); 
-            scanf("%d", &menuNav);
-            //para impedir de colocar uma espada que não possui
-            if(inv[menuNav].espadas_verificador == 1)
-            {
-                int espada = personagem_principal.ataque + inv[menuNav].espadas_valores;
-                personagem_principal.ataque = espada;
-                printf("você selecionou a espada: %s\nEstá com: %d de ataque", inv[menuNav].espadas_nome, espada);
-                sleep(5);
-                invetario(); 
-            }else{
-                
-                printf("você não possui está espada\n");
-                invetario(); 
-            }
-
-            break;
-
-        case 2:
-            invetario(); 
-            break;
-        
-        default:
-            invetario(); 
-            break;
-        }
-        
-       sleep(3);
-
-        break;
-        
-    case 2:
-        //mostrar os escudos:
-        for (int i = 0; i < MAX; i++)
-        {
-            if(inv[i].escudos_verificador == 1)
-            {
-                printf("%d - %s \n", i+1, personagem_principal_itens[i].Personagem_inventario.escudo_nome);
-            }
-    
-         }
-
-        sleep(5); //depois faço o resto do código
-        invetario();
-
-        break;
-    
-    case 3:
-
-        opcoes();
-
-        break;
-
-    default:
-        invetario();
-        break;
-    }
-}
-
-//main -> cadastro -> opções -> (andar ou explorar casa)
-
-int  opcoes(){
-    
-    system(CLEAR); //limpa a tela
-
-    printf("*Você está em sua casa e enfim levanta...\n\n");
-    sleep(1);
-    printf("Você não se recorda de nada...\n");
-    sleep(1);
-    printf("Segue ao espelho, nada de especial\n");
-    sleep(1);
-    printf("Seu braço reflete, é possível ver uma mensagem...\n\n'Mate-os, liberte a alma' \n\n");
-    sleep(1);
-    puts("Você olha ao redor e não vê nada além de uma casa de madeira caindo aos pedaços\n");
-    sleep(5);
-
-    system(CLEAR);
-    puts("\n\nMenu: ");
-    puts("O que deseja fazer??");
-    puts("1 - Andar \n2 - Explorar a casa\n3- invetario");
-    scanf("%d", &menuNav);
-    int i=0;
-    do{
-        switch (menuNav)
-        {
-        i++;
-        case 1:
-            andar(0); //depois de ter explorado a casa ele pode andar
-            break;
-        case 2:
-            if (inv[0].pergaminho_verificador == 1) // para evitar de ficar explorando a casa
-            {
-                printf("a casa já foi explorada, vamos sair \n");
-                sleep(10);
-                opcoes();
-            }else{
-
-                explorarCasa();   // primeiro terá que explorar a casa (no arquivo funções)
-            }
-
-            break; //tinha apagado os breaks sem querer ao passar as funções
-
-        case 3:
-                invetario();
-
-            break;
-        default:
-            opcoes(); 
-            break;
-        } 
-        
-    }while(i < 1);
-}
-
-
-//sala
-
-void sala(){
-    
-        if(verificador == 0){ // verificar se ele ja entrou ou nao na sala
-            printf("Você entra silenciosamente na sala principal.\n");
-            sleep(1);
-
-            //removi as funções sprites do código, falta ainda implementar os headers
-
-            sleep(1);
-            printf("O local está horrível, há pedaços de madeira podre em toda parte\n");
-            sleep(1);
-            printf("É possível ver algo brilhante refletindo em uma pequena mesa de centro\n");
-            sleep(1);
-            puts("Deseja verificar o que é?\n");
-            printf("1 - Sim\n2 - Não\n");
-            scanf("%d", &menuNav);
-            
-            if (menuNav == 1){
-                puts("Você chega perto para ver, afasta um pouco os pedaçoes destroçados de madeira...\n");
-                sleep(1);
-                puts("É isso! Uma chave, com certeza é a chave que precisa para entrar no quarto\n");
-
-                verificador = 1; // agora ele ja pode andar e entrar no quarto
-
-                sleep(1);
-                printf("Vamos voltar e explorar o quarto...\n");
-                sleep(8);
-                explorarCasa();
-
-            }else{
-
-                puts("Ah, melhor não ver o que é, devemos voltar!");
-                sleep(10);
-                explorarCasa(); //para não ficar confuso, ele volta para as opções de sala ou quarto
-
-            }
-            
-        }
-}
-
 int dano;
 int dadoGerado_2;
 
@@ -334,6 +152,7 @@ void batalha(int x) //para saber qual inimigo usei o "x", é só passar o valor 
 
     //ponteiro que aponta para os valores da struct personagem_principal
     Personagem_atributos *personagem_ponteiro = &personagem_principal; 
+
     sleep(3);
 
     //para saber se o inimigo morreu ou personagem morreu, dois casos possiveis: 
@@ -470,22 +289,165 @@ void batalha(int x) //para saber qual inimigo usei o "x", é só passar o valor 
 
 }
 
-void morte()
-{
-    printf("%s morreu \n", personagem_principal.nome); 
-    printf("Aperte 1: para 'Tentar novamentea'\n2: para 'desitir'");
+
+
+void invetario(){
+    system(CLEAR);
+    printf("Inventário: \n1- para ver as suas espadas\n2-para ver seus os escudos\n3-voltar para o menu");
     scanf("%d", &menuNav);
+
+    //inventario *invetario_ponteiro[] = &inv[MAX];
+    //inventario *personagem_invetario[] = &personagem_principal_itens[MAX];
+    
+    printf("você adquiriu uma %s\n", inv[0].espadas_nome);
+    //testando a usabilidade: //para passar os valores da espada ou do escudo é só copiar o código e alterar os valores do array
+    strcpy(personagem_principal_itens[0].Personagem_inventario.espadas_nome, inv[0].espadas_nome);
+    int espada = personagem_principal.ataque + inv[0].espadas_valores;
+    personagem_principal.ataque = espada; 
+    inv[0].espadas_verificador = 1; //para saber qual espada o usuario tem, 0 para false, 1 para true
+    int usando_espada = 0; 
+
+     printf("você adquiriu um %s\n", inv[0].escudo_nome);
+    strcpy(personagem_principal_itens[0].Personagem_inventario.escudo_nome, inv[0].escudo_nome);
+    int escudo = personagem_principal.vida + inv[0].escudo_valores;
+    personagem_principal.vida = escudo; 
+    inv[0].escudos_verificador = 1; 
+    sleep(5);
+
     switch (menuNav)
     {
     case 1:
-        printf("%s", personagem_principal.nome);   
-        opcoes();
+       //mostrar as espadas: 
+       //fiz dessa forma para caso ele não consiga pegar uma espada em alguma determidada parte do jogo
+        for (int i = 0; i < MAX; i++)
+        {
+            if(inv[i].espadas_verificador == 1)
+            {
+                printf("%d - %s \n", i+1, personagem_principal_itens[i].Personagem_inventario.espadas_nome);
+            }
+        }
+        //trocar de espada, para quando a gente colocar stats nas espadas
+        printf("Deseja trocar de arma\n1-para sim\n2-para voltar");
+        scanf("%d", &menuNav);
+
+        //para trocar de arma ele tem que tirar o valor da espada que ele já estiver usando, senão terá ataque infinito
+        switch (menuNav)
+        {
+        case 1:
+            espada = personagem_principal.ataque - inv[usando_espada].espadas_valores;
+            personagem_principal.ataque = espada;
+
+            printf("qual espada deseja escolher? \n"); 
+            scanf("%d", &menuNav);
+            //para impedir de colocar uma espada que não possui
+            if(inv[menuNav].espadas_verificador == 1)
+            {
+                int espada = personagem_principal.ataque + inv[menuNav].espadas_valores;
+                personagem_principal.ataque = espada;
+                printf("você selecionou a espada: %s\nEstá com: %d de ataque", inv[menuNav].espadas_nome, espada);
+                sleep(5);
+                invetario(); 
+            }else{
+                
+                printf("você não possui está espada\n");
+                invetario(); 
+            }
+
+            break;
+
+        case 2:
+            invetario(); 
+            break;
+        
+        default:
+            invetario(); 
+            break;
+        }
+        
+       sleep(3);
+
+        break;
+        
+    case 2:
+        //mostrar os escudos:
+        for (int i = 0; i < MAX; i++)
+        {
+            if(inv[i].escudos_verificador == 1)
+            {
+                printf("%d - %s \n", i+1, personagem_principal_itens[i].Personagem_inventario.escudo_nome);
+            }
+    
+         }
+
+        sleep(5); //depois faço o resto do código
+        invetario();
+
         break;
     
-    case 2:
-        printf("A sua historia acaba por aqui \n Obrigado por ter jogado");
+    case 3:
+
+        opcoes();
+
+        break;
+
+    default:
+        invetario();
         break;
     }
+}
+
+//main -> cadastro -> opções -> (andar ou explorar casa)
+
+void opcoes(){
+    
+    system(CLEAR); //limpa a tela
+
+    printf("*Você está em sua casa e enfim levanta...\n\n");
+    sleep(1);
+    printf("Você não se recorda de nada...\n");
+    sleep(1);
+    printf("Segue ao espelho, nada de especial\n");
+    sleep(1);
+    printf("Seu braço reflete, é possível ver uma mensagem...\n\n'Mate-os, liberte a alma' \n\n");
+    sleep(1);
+    puts("Você olha ao redor e não vê nada além de uma casa de madeira caindo aos pedaços\n");
+    sleep(5);
+
+    system(CLEAR);
+    puts("\n\nMenu: ");
+    puts("O que deseja fazer??");
+    puts("1 - Andar \n2 - Explorar a casa\n3- invetario");
+    scanf("%d", &menuNav);
+    int i=0;
+    do{
+        switch (menuNav)
+        {
+        case 1:
+            andar(0); //depois de ter explorado a casa ele pode andar
+            break;
+        case 2:
+            if (inv[0].pergaminho_verificador == 1) // para evitar de ficar explorando a casa
+            {
+                printf("a casa já foi explorada, vamos sair \n");
+                sleep(10);
+                opcoes();
+            }else{
+
+                explorarCasa();   // primeiro terá que explorar a casa (no arquivo funções)
+            }
+
+            break; //tinha apagado os breaks sem querer ao passar as funções
+
+        case 3:
+                invetario();
+
+            break;
+        default:
+            opcoes(); 
+            break;
+        } 
+        
+    }while(i < 1);
 }
 
 void animation(){
@@ -534,23 +496,147 @@ void animation(){
    
 }
 
+// quarto
+void quarto(){
 
-//                _           _             
-//               | |         | |            
-//   ___ __ _  __| | __ _ ___| |_ _ __ ___  
-//  / __/ _` |/ _` |/ _` / __| __| '__/ _ \ 
-// | (_| (_| | (_| | (_| \__ \ |_| | | (_) |
-//  \___\__,_|\__,_|\__,_|___/\__|_|  \___/ 
+        if(verificador == 0){ // para entrar no quarto ele precisa entrar na sala primeiro
 
+            puts("Você decide entrar no quarto, entretanto a porta esta trancada e não há formas de entrar\n\n");
+            puts("talvez tenha algo para abrir a porta em algum lugar...");
+            sleep(10); //colocando os sleep para não executar muito rapido e dar tempo de ler
+            explorarCasa();
+
+        } else {
+
+            printf("O quarto esta escuro e abandonado, há restos de roupas pelo chão...\n");
+            sleep(1);
+            printf("Parece ter sido vasculhado por alguem recentemente...\n");
+            sleep(1);
+            puts("Em meio a bagunça, você observa alguns rasgos na parede. \n");
+            sleep(1);
+            puts("Na parde ao lado uma escrita em sangue feito a mão 'eles são reais' \n\n");
+            sleep(1);
+            puts("Logo abaixo um baú de madeira, você deseja abrir? \n");
+            
+            puts("1-para abrir\n2-para voltar");
+
+            puts("\n\n*Você contará com sua sorte para conseguir ou não abrir o baú*"); //começar a usar o dado daqui depois da introdução
+
+            scanf("%d", &menuNav);
+
+
+            if (menuNav == 1){
+   
+                // dado gerado
+                dadoGerado = dado();
+
+                if(dadoGerado >= 4 && verificador_bau_tentativa == 0){
+
+                    verificador_bau_tentativa = 1;
+
+                    sleep(1);
+                    printf("valor da jogada do dado : %d \n", dadoGerado); // mostra o valor do dado
+                    
+                    sleep(1);
+                    printf("Você empurra o baú, uma parte se solta e você pode conferir o que há dentro\n\n");
+                    printf("Legal, você encontrou um pergaminho, item adicionado ao seu inventário\n");
+
+                    inv[0].pergaminho_verificador = 1;
+                    
+                    sleep(1);
+                    printf("Acho que não há mais o que explorar, vamos sair da casa!");
+                    sleep(10);
+                    opcoes();
+                    
+                } else {
+                    verificador_bau_tentativa = 1; 
+
+                    sleep(1);
+                    printf("valor da jogada do dado : %d \n", dadoGerado); // mostra o valor do dado
+                    printf("O baú está muito bem lacrado, infelizmente você não consegue abrir\n");
+                    sleep(2);
+                    printf("Acho que não há mais o que explorar, vamos sair da casa!\n");
+                    sleep(10);
+                    opcoes();
+                }
+
+            }else if(menuNav == 2){
+                
+                printf("vamos voltar \n");
+                sleep(10);
+                opcoes();
+
+            }
+
+        }
+}
+
+//sala
+
+void sala(){
+
+    
+        if(verificador == 0){ // verificar se ele ja entrou ou nao na sala
+            printf("Você entra silenciosamente na sala principal.\n");
+            sleep(1);
+
+            //removi as funções sprites do código, falta ainda implementar os headers
+
+            sleep(1);
+            printf("O local está horrível, há pedaços de madeira podre em toda parte\n");
+            sleep(1);
+            printf("É possível ver algo brilhante refletindo em uma pequena mesa de centro\n");
+            sleep(1);
+            puts("Deseja verificar o que é?\n");
+            printf("1 - Sim\n2 - Não\n");
+            scanf("%d", &menuNav);
+            
+            if (menuNav == 1){
+                puts("Você chega perto para ver, afasta um pouco os pedaçoes destroçados de madeira...\n");
+                sleep(1);
+                puts("É isso! Uma chave, com certeza é a chave que precisa para entrar no quarto\n");
+
+                verificador = 1; // agora ele ja pode andar e entrar no quarto
+
+                sleep(1);
+                printf("Vamos voltar e explorar o quarto...\n");
+                sleep(8);
+                explorarCasa();
+
+            }else{
+
+                puts("Ah, melhor não ver o que é, devemos voltar!");
+                sleep(10);
+                explorarCasa(); //para não ficar confuso, ele volta para as opções de sala ou quarto
+
+            }
+            
+        }
+}
+
+
+
+/*
+
+              _           _             
+             | |         | |            
+   _ __ _  __| | __ _ ___| |_ _ __ ___  
+  / __/ _` |/ _` |/ _` / __| __| '__/ _ \ 
+ | (_| (_| | (_| | (_| \__ \ |_| | | (_) |
+  \___\__,_|\__,_|\__,_|___/\__|_|  \___/ 
+
+
+*/
                                          
 //main -> cadastro
 void cadastro(){
+
     system(CLEAR);
     puts("*Depois de uma longa noite, o escolhido finalmente acorda...\n");
     sleep(2);
     getchar();//limpar o buffer
     printf("Como deveriamos lhe chamar?\n");
-    scanf(" %19[^\n]s", &personagem_principal.nome);
+    scanf("%19s", personagem_principal.nome);
     printf("que bom que acordou, bem-vindo de volta %s \n", personagem_principal.nome);
     sleep(5);
     int escolher;

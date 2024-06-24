@@ -19,11 +19,9 @@
     #define CLEAR "clear"
 #endif
 
-
 //main
 int main(){
-    
-    setlocale (LC_ALL, "Portuguese");
+    setlocale(LC_ALL, "Portuguese");
 
     //passando dados para struct personagem.atributos
     inimigo_1[0].ataque = 1;
